@@ -7,7 +7,7 @@ public class TriangleHit : MonoBehaviour
 {
     public ArrayList hitlist = new ArrayList();
 
-    
+    public int direction;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -16,7 +16,7 @@ public class TriangleHit : MonoBehaviour
         {
             hitlist.Add(collision.gameObject);
         }
-        Debug.Log(transform.name + " collided with " + collision.gameObject.name + " taille : " + hitlist.Count);
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

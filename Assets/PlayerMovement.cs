@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 visioninput;
 
-    private float gripinput;
+    public float gripinput;
 
     public bool gripping;
 
@@ -89,27 +89,41 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementinput == Vector2.zero)
         {
-            Replace();
+            Replace(transform, ReplaceVelocity);
         }
         else
         {
+
+            
+
             GetComponent<Rigidbody2D>().velocity = movementinput * movementspeed;
+
+            //if (GetComponent<PullerScript>().direction == 1)
+            //{
+            //    GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            //}
+
+            //if (GetComponent<PullerScript>().direction == -1)
+            //{
+            //    GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
+            //}
+
         }
     }
 
 
 
-    public void Replace()
+    public void Replace(Transform tomove, float speed)
     {
-        Vector2 Destination = new Vector2((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y));
+        Vector2 Destination = new Vector2((int)Mathf.Round(tomove.position.x), (int)Mathf.Round(tomove.position.y));
 
-        if(Vector2.Distance(transform.position, Destination)>0.01f)
+        if(Vector2.Distance(tomove.position, Destination)>0.01f)
         {
-            GetComponent<Rigidbody2D>().velocity = (Destination - (Vector2)transform.position) * ReplaceVelocity;
+            tomove.GetComponent<Rigidbody2D>().velocity = (Destination - (Vector2)tomove.position) * speed;
         }
         else
         {
-            transform.position = new Vector2((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y));
+            tomove.position = new Vector2((int)Mathf.Round(tomove.position.x), (int)Mathf.Round(tomove.position.y));
         }
     }
 

@@ -9,25 +9,55 @@ public class PullerScript : MonoBehaviour
 
     public GameObject target;
 
-    public float direction; // -1 horizontal(x), 1 vertical(y); 
+    public int direction; // -1 horizontal(x), 1 vertical(y); 
 
     public int range;
 
+    private GameObject activetriangle;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private ArrayList activetrianglelist;
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
         grippressed = GetComponent<PlayerMovement>().gripping;
-
-
-
-
-
+        activetriangle = GetComponent<PlayerMovement>().activeTriangle;
+        activetrianglelist = activetriangle.GetComponent<TriangleHit>().hitlist;
+        if (grippressed)
+        {
+            direction = activetriangle.GetComponent<TriangleHit>().direction;
+            foreach (GameObject go in activetrianglelist)
+            {
+                if (Vector2.Distance(go.transform.position, transform.position) <= range)
+                {
+                    if (target != null)
+                    {
+                        if (Vector2.Distance(go.transform.position, transform.position) < Vector2.Distance(target.transform.position, transform.position))
+                        {
+                            target = go;
+                        }
+                    }
+                    else
+                    {
+                        target = go;
+                    }
+                }
+            }
+            if(target != null)
+            {
+                if (target.GetComponent<wallscript>() != null)
+                {
+                    target = null;
+                }
+            }
+        }
+        else
+        {
+            direction = 0;
+            target = null;
+        }
+        
     }
 }

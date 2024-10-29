@@ -8,6 +8,7 @@ public class Instantiator : MonoBehaviour
 
     public GameObject player;
     public GameObject wall;
+    public GameObject movable;
 
     void Start()
     {
@@ -37,6 +38,10 @@ public class Instantiator : MonoBehaviour
                 {
                     Instantiate(player, position, Quaternion.identity);
                 }
+                if (listinside[x].Equals('M'))
+                {
+                    Instantiate(movable, position, Quaternion.identity);
+                }
 
             }
         }
@@ -56,11 +61,27 @@ public class Instantiator : MonoBehaviour
         list.Add('W');
         list.Add('W');
         list.Add('W');
+        list.Add('W');
+        list.Add('W');
 
         finallist.Add(list);
 
         list = new ArrayList();
         list.Add('W');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('W');
+
+        finallist.Add(list);
+
+        list = new ArrayList();
+        list.Add('W');
+        list.Add('%');
+        list.Add('%');
         list.Add('%');
         list.Add('%');
         list.Add('%');
@@ -73,6 +94,8 @@ public class Instantiator : MonoBehaviour
         list.Add('W');
         list.Add('P');
         list.Add('%');
+        list.Add('W');
+        list.Add('M');
         list.Add('%');
         list.Add('%');
         list.Add('W');
@@ -85,11 +108,27 @@ public class Instantiator : MonoBehaviour
         list.Add('%');
         list.Add('%');
         list.Add('%');
+        list.Add('%');
+        list.Add('%');
         list.Add('W');
 
         finallist.Add(list);
 
         list = new ArrayList();
+        list.Add('W');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('%');
+        list.Add('W');
+
+        finallist.Add(list);
+
+        list = new ArrayList();
+        list.Add('W');
+        list.Add('W');
         list.Add('W');
         list.Add('W');
         list.Add('W');
