@@ -30,13 +30,14 @@ public class PullerScript : MonoBehaviour
             direction = activetriangle.GetComponent<TriangleHit>().direction;
             foreach (GameObject go in activetrianglelist)
             {
-                if (Vector2.Distance(go.transform.position, transform.position) <= range)
+                if (Vector2.Distance(go.transform.position, transform.position) <= range+0.1f)
                 {
                     if (target != null)
                     {
                         if (Vector2.Distance(go.transform.position, transform.position) < Vector2.Distance(target.transform.position, transform.position))
                         {
                             target = go;
+                            
                         }
                     }
                     else
@@ -51,6 +52,7 @@ public class PullerScript : MonoBehaviour
                 {
                     target = null;
                 }
+
             }
         }
         else
@@ -60,4 +62,5 @@ public class PullerScript : MonoBehaviour
         }
         
     }
+
 }

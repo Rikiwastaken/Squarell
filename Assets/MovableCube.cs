@@ -24,15 +24,18 @@ public class MovableCube : MonoBehaviour
             if(distance == Vector2.zero)
             {
                 distance = new Vector2((int)Mathf.Round(transform.position.x - PlayerCube.transform.position.x), (int)Mathf.Round(transform.position.y - PlayerCube.transform.position.y));
+                
             }
             
 
             transform.position = (Vector2)PlayerCube.transform.position + distance;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 
-            
+
         }
         else
         {
+            transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
             distance = Vector2.zero;
             PlayerCube.GetComponent<PlayerMovement>().Replace(transform, PlayerCube.GetComponent<PlayerMovement>().ReplaceVelocity);
         }

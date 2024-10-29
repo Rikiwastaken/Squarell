@@ -9,10 +9,13 @@ public class Instantiator : MonoBehaviour
     public GameObject player;
     public GameObject wall;
     public GameObject movable;
+    public GameObject floor;
+    public GameObject victory;
 
     void Start()
     {
-        listtoinstantiate = ExampleInitializer();
+        //listtoinstantiate = ExampleInitializer();
+        listtoinstantiate = ExampleInitializerSimple();
         GenerateRoom(listtoinstantiate);
 
     }
@@ -37,10 +40,24 @@ public class Instantiator : MonoBehaviour
                 if (listinside[x].Equals('P'))
                 {
                     Instantiate(player, position, Quaternion.identity);
+                    GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
+                    newfloor.transform.SetParent(GameObject.Find("Floors").transform);
                 }
                 if (listinside[x].Equals('M'))
                 {
                     Instantiate(movable, position, Quaternion.identity);
+                    GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
+                    newfloor.transform.SetParent(GameObject.Find("Floors").transform);
+                }
+                if (listinside[x].Equals('F'))
+                {
+                    GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
+                    newfloor.transform.SetParent(GameObject.Find("Floors").transform);
+                }
+                if (listinside[x].Equals('V'))
+                {
+                    Instantiate(victory, position, Quaternion.identity);
+
                 }
 
             }
@@ -48,6 +65,60 @@ public class Instantiator : MonoBehaviour
 
     }
 
+
+
+    ArrayList ExampleInitializerSimple()
+    {
+        ArrayList finallist = new ArrayList();
+
+        ArrayList list = new ArrayList();
+        list.Add('W');
+        list.Add('W');
+        list.Add('W');
+        list.Add('W');
+        list.Add('W');
+
+        finallist.Add(list);
+
+        list = new ArrayList();
+        list.Add('W');
+        list.Add('P');
+        list.Add('F');
+        list.Add('W');
+        list.Add('W');
+
+        finallist.Add(list);
+
+        list = new ArrayList();
+        list.Add('W');
+        list.Add('W');
+        list.Add('M');
+        list.Add('F');
+        list.Add('W');
+
+        finallist.Add(list);
+
+        list = new ArrayList();
+        list.Add('W');
+        list.Add('W');
+        list.Add('F');
+        list.Add('V');
+        list.Add('W');
+
+        finallist.Add(list);
+
+        list = new ArrayList();
+        list.Add('W');
+        list.Add('W');
+        list.Add('W');
+        list.Add('W');
+        list.Add('W');
+
+        finallist.Add(list);
+
+        return finallist;
+
+    }
 
 
     ArrayList ExampleInitializer()
@@ -68,24 +139,24 @@ public class Instantiator : MonoBehaviour
 
         list = new ArrayList();
         list.Add('W');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
         list.Add('W');
 
         finallist.Add(list);
 
         list = new ArrayList();
         list.Add('W');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
         list.Add('W');
 
         finallist.Add(list);
@@ -93,35 +164,35 @@ public class Instantiator : MonoBehaviour
         list = new ArrayList();
         list.Add('W');
         list.Add('P');
-        list.Add('%');
+        list.Add('F');
         list.Add('W');
         list.Add('M');
-        list.Add('%');
-        list.Add('%');
+        list.Add('F');
+        list.Add('F');
         list.Add('W');
 
         finallist.Add(list);
 
         list = new ArrayList();
         list.Add('W');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
         list.Add('W');
 
         finallist.Add(list);
 
         list = new ArrayList();
         list.Add('W');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
-        list.Add('%');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
+        list.Add('F');
         list.Add('W');
 
         finallist.Add(list);
