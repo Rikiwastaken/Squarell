@@ -14,7 +14,18 @@ public class TriangleHit : MonoBehaviour
         
         if(!hitlist.Contains(collision.gameObject))
         {
-            hitlist.Add(collision.gameObject);
+            if(collision.transform.GetComponent<wallscript>() != null)
+            {
+                if(!collision.transform.GetComponent<wallscript>().seethrough)
+                {
+                    hitlist.Add(collision.gameObject);
+                }
+            }
+            else
+            {
+                hitlist.Add(collision.gameObject);
+            }
+            
         }
         
     }

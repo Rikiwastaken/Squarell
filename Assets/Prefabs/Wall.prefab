@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1711216484405746362}
   - component: {fileID: 4747661142123666369}
   m_Layer: 0
-  m_Name: WallCube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae6e3d1c4d76fa4f979daf58bafe9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seethrough: 0
 --- !u!50 &4747661142123666369
 Rigidbody2D:
   serializedVersion: 4

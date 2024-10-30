@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 5806576579810695643}
   - component: {fileID: 2570433167242836573}
   m_Layer: 0
-  m_Name: PlayerCube
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +390,6 @@ MonoBehaviour:
   target: {fileID: 0}
   direction: 0
   range: 3
-  CylindrePrefab: {fileID: 8247667850221829473, guid: 1e62288500796574db69c23106e2abb0, type: 3}
 --- !u!1 &4444691896117123447
 GameObject:
   m_ObjectHideFlags: 0

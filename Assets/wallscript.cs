@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class wallscript : MonoBehaviour
 {
-
+    public bool seethrough;
     // Update is called once per frame
     void Start()
     {
