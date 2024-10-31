@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +32,8 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     public GameObject[] objectlist;
 
+    public GameObject errormessage;
+
     public int IndiceSelection;
 
     public int minxplaced;
@@ -43,6 +47,11 @@ public class PlayerCursorEditorScript : MonoBehaviour
     private Transform ObjectsPlaced;
 
     private bool FirstPlaced = true;
+
+    private string scenename;
+
+    
+
 
 
     // Start is called before the first frame update
@@ -75,6 +84,9 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        scenename = GameObject.Find("NameSelector").GetComponent<TMP_InputField>().text;
+
         if(Vector2.Distance(cam.transform.position, transform.position)>5)
         {
             cam.transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), cam.transform.position.z);
@@ -192,12 +204,14 @@ public class PlayerCursorEditorScript : MonoBehaviour
             }
             if (newObject.GetComponent<PlayerMovement>() != null)
             {
+                DeleteDuplicates(objectlist[IndiceSelection], transform.position);
                 newObject.GetComponent<PlayerMovement>().enabled = false;
             }
             if (newObject.GetComponent<PullerScript>() != null)
             {
                 newObject.GetComponent<PullerScript>().enabled = false;
             }
+            //ajouter victory script
 
             newObject.transform.SetParent(ObjectsPlaced);
 
@@ -233,12 +247,23 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
             pressedgrip = true;
         }
-
-        Debug.Log(GenerateSaveString());
-
-
     }
 
+    void DeleteDuplicates(GameObject type, Vector2 coordinates)
+    {
+        int nbchildren = ObjectsPlaced.childCount;
+
+        for (int i = 0; i < nbchildren; i++)
+        {
+            Transform acttransform = ObjectsPlaced.GetChild(i);
+            if ((Mathf.Round(acttransform.position.x) != coordinates.x || Mathf.Round(acttransform.position.y) == coordinates.y) && acttransform.name.Contains(type.transform.name))
+            {
+                Vector2 newpos = acttransform.transform.position;
+                Destroy(acttransform.gameObject); //on détruit la transform qui se trouve là où on veut mettre un objet
+                Instantiate(objectlist[7], newpos, Quaternion.identity);
+            }
+        }
+    }
     string GenerateSaveString()
     {
 
@@ -261,10 +286,56 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 }
                 SaveString += next;
             }
-            SaveString += "%";
+            if(y!=maxyplaced)
+            {
+                SaveString += "%";
+            }
         }
 
         return SaveString;
+    }
+
+    void GenerateError(string message)
+    {
+        Transform CanvasParent = GameObject.Find("Canvas").transform;
+        GameObject newerror = Instantiate(errormessage,Vector3.zero, Quaternion.identity);
+        newerror.GetComponent<ErrorMessageScript>().messagetodisplay = message;
+        newerror.transform.SetParent(CanvasParent);
+        newerror.transform.localScale = Vector3.one;
+    }
+
+    public void SaveLevel()
+    {
+
+        if(scenename == "Name" || scenename =="")
+        {
+            GenerateError("You have to enter a name.");
+        }
+        else
+        {
+            if (!System.IO.Directory.Exists(Application.persistentDataPath + "/SavedLevels"))
+            {
+                System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/SavedLevels");
+            }
+            string Levelstring = GenerateSaveString();
+
+            if (Levelstring == "")
+            {
+                GenerateError("Level is empty.");
+            }
+            else if (!Levelstring.Contains("P"))
+            {
+                GenerateError("You have to place a Player.");
+            }
+            else if (!Levelstring.Contains("I"))
+            {
+                GenerateError("You have to place a Victory Square.");
+            }
+            else
+            {
+                System.IO.File.WriteAllText(Application.persistentDataPath + "/SavedLevels/" + scenename + ".txt", Levelstring);
+            }
+        }
     }
 
     string GetCorrespondingChar(Transform target)
