@@ -6,7 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: fe0a39c3beafe9c459834444f37b9a4f
+  - enabled: 1
     path: Assets/Scenes/InGameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LevelEditor.unity
+    guid: e1fb49e6ec3ef654c8e1ad8604f4690d
+  - enabled: 1
+    path: Assets/Scenes/LevelSelector.unity
+    guid: f805277f079083a40b6da7150931b1ce
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

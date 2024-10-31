@@ -28,8 +28,6 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     private GameObject cam;
 
-    public float cammovespeed;
-
     public GameObject[] objectlist;
 
     public GameObject errormessage;
@@ -87,7 +85,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
         scenename = GameObject.Find("NameSelector").GetComponent<TMP_InputField>().text;
 
-        if(Vector2.Distance(cam.transform.position, transform.position)>5)
+        if(Vector2.Distance(cam.transform.position, transform.position)>10)
         {
             cam.transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), cam.transform.position.z);
         }
@@ -295,13 +293,19 @@ public class PlayerCursorEditorScript : MonoBehaviour
         return SaveString;
     }
 
-    void GenerateError(string message)
+    void GenerateError(string message, bool toMainMenu)
     {
         Transform CanvasParent = GameObject.Find("Canvas").transform;
         GameObject newerror = Instantiate(errormessage,Vector3.zero, Quaternion.identity);
         newerror.GetComponent<ErrorMessageScript>().messagetodisplay = message;
         newerror.transform.SetParent(CanvasParent);
         newerror.transform.localScale = Vector3.one;
+        if(toMainMenu)
+        {
+            newerror.transform.GetChild(0).gameObject.SetActive(false);
+            newerror.transform.GetChild(1).gameObject.SetActive(true);
+            newerror.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 
     public void SaveLevel()
@@ -309,7 +313,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
         if(scenename == "Name" || scenename =="")
         {
-            GenerateError("You have to enter a name.");
+            GenerateError("You have to enter a name.",false);
         }
         else
         {
@@ -321,15 +325,15 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
             if (Levelstring == "")
             {
-                GenerateError("Level is empty.");
+                GenerateError("Level is empty.", false);
             }
             else if (!Levelstring.Contains("P"))
             {
-                GenerateError("You have to place a Player.");
+                GenerateError("You have to place a Player.", false);
             }
             else if (!Levelstring.Contains("I"))
             {
-                GenerateError("You have to place a Victory Square.");
+                GenerateError("You have to place a Victory Square.", false);
             }
             else
             {
