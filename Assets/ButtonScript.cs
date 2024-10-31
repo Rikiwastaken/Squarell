@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
+
+    public string levelname;
+
     public void DestroyParent()
     {
         if(transform.parent != null)
@@ -38,6 +41,13 @@ public class ButtonScript : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void selectlevel()
+    {
+        GameObject.Find("Info").GetComponent<Info>().levelname = levelname;
+        GameObject.Find("Info").GetComponent<Info>().leveltoload = System.IO.File.ReadAllText(Application.persistentDataPath + "/SavedLevels/"+levelname);
+        SceneManager.LoadScene("InGameScene");
     }
 
 }
