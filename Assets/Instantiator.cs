@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Instantiator : MonoBehaviour
 {
-    public ArrayList listtoinstantiate;
+
 
     public GameObject player;
     public GameObject wall;
@@ -17,20 +17,21 @@ public class Instantiator : MonoBehaviour
 
     void Start()
     {
-        listtoinstantiate = ExampleInitializer();
-        //listtoinstantiate = ExampleInitializerSimple();
+
+        string listtoinstantiate = GameObject.Find("Info").GetComponent<Info>().leveltoload;
+
         GenerateRoom(listtoinstantiate);
 
     }
 
-    void GenerateRoom(ArrayList list)
+    void GenerateRoom(string list)
     {
+        string[] listalllines=list.Split('%');
 
-        for (int y = 0; y < list.Count; y++)
+        for (int y = 0; y < listalllines.Length; y++)
         {
-
-            ArrayList listinside = (ArrayList)list[y];
-            for (int x = 0; x < listinside.Count; x++)
+;           string listinside=listalllines[y];
+            for (int x = 0; x < listinside.Length; x++)
             {
 
                 Vector2 position = new Vector2(x, -y);

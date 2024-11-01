@@ -21,7 +21,6 @@ public class PullerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         grippressed = GetComponent<PlayerMovement>().gripping;
         activetriangle = GetComponent<PlayerMovement>().activeTriangle;
         activetrianglelist = activetriangle.GetComponent<TriangleHit>().hitlist;
@@ -32,6 +31,7 @@ public class PullerScript : MonoBehaviour
             {
                 if (Vector2.Distance(go.transform.position, transform.position) <= range+0.1f)
                 {
+                    Debug.Log(go.name);
                     if (target != null)
                     {
                         if (Vector2.Distance(go.transform.position, transform.position) < Vector2.Distance(target.transform.position, transform.position))

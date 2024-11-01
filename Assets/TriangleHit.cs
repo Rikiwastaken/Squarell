@@ -11,7 +11,6 @@ public class TriangleHit : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
         if(!hitlist.Contains(collision.gameObject))
         {
             if(collision.transform.GetComponent<wallscript>() != null)

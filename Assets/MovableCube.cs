@@ -17,7 +17,7 @@ public class MovableCube : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayerCube = GameObject.Find("PlayerCube(Clone)");
+        PlayerCube = GameObject.Find("Player(Clone)");
         if(PlayerCube == null )
         {
             return;
@@ -38,7 +38,6 @@ public class MovableCube : MonoBehaviour
             }
             
 
-            
             if(orientation == 0)
             {
                 GetComponent<Rigidbody2D>().velocity = PlayerCube.GetComponent<Rigidbody2D>().velocity;
