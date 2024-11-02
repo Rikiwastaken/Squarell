@@ -17,10 +17,13 @@ public class Instantiator : MonoBehaviour
 
     void Start()
     {
+        if(GameObject.Find("Info")!=null)
+        {
+            string listtoinstantiate = GameObject.Find("Info").GetComponent<Info>().leveltoload;
 
-        string listtoinstantiate = GameObject.Find("Info").GetComponent<Info>().leveltoload;
-
-        GenerateRoom(listtoinstantiate);
+            GenerateRoom(listtoinstantiate);
+        }
+        
 
     }
 
