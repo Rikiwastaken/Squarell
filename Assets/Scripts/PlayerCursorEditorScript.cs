@@ -48,37 +48,18 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     private string scenename;
 
-    
+    public GameObject[] Shortcuts;
 
-
+    public Transform ShortcutsTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        Inputcompo.FindAction("Move").performed += OnMove;
-        Inputcompo.FindAction("Grip").performed += OnGrip;
-        Inputcompo.FindAction("Movevision").performed += OnVision;
         cam = GameObject.Find("Main Camera");
         ObjectsPlaced = GameObject.Find("ObjectsPlaced").transform;
-
+        InitializeInputs();
     }
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-
-        movementinput = context.ReadValue<Vector2>();
-    }
-
-    public void OnVision(InputAction.CallbackContext context)
-    {
-
-        visioninput = context.ReadValue<Vector2>();
-    }
-
-    public void OnGrip(InputAction.CallbackContext context)
-    {
-        gripinput = context.ReadValue<float>();
-    }
+    
 
     private void FixedUpdate()
     {
@@ -140,6 +121,111 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
        
 
+    }
+
+
+    private void InitializeInputs()
+    {
+        Inputcompo.FindAction("Move").performed += OnMove;
+        Inputcompo.FindAction("Grip").performed += OnGrip;
+        Inputcompo.FindAction("Movevision").performed += OnVision;
+        Inputcompo.FindAction("Select0").performed += OnShortcut;
+        Inputcompo.FindAction("Select1").performed += OnShortcut;
+        Inputcompo.FindAction("Select2").performed += OnShortcut;
+        Inputcompo.FindAction("Select3").performed += OnShortcut;
+        Inputcompo.FindAction("Select4").performed += OnShortcut;
+        Inputcompo.FindAction("Select5").performed += OnShortcut;
+        Inputcompo.FindAction("Select6").performed += OnShortcut;
+        Inputcompo.FindAction("Select7").performed += OnShortcut;
+        Inputcompo.FindAction("Select8").performed += OnShortcut;
+        Inputcompo.FindAction("Select9").performed += OnShortcut;
+
+
+    }
+
+    public void OnShortcut(InputAction.CallbackContext context)
+    {
+        string number = context.action.name[context.action.name.Length - 1]+"";
+        int shortcutnumber = int.Parse(number);
+        if(Shortcuts.Length > shortcutnumber)
+        {
+            for (int i = 0;i<objectlist.Length;i++)
+            {
+                if (objectlist[i]==Shortcuts[shortcutnumber])
+                {
+                    IndiceSelection = i;
+                }
+            }
+        }
+    }
+
+    void ChangeShortCutIcons()
+    {
+        for(int i =0; i<Shortcuts.Length;i++)
+        {
+
+            if(ShortcutsTransform.GetChild(i).childCount>0)
+            {
+                Destroy(ShortcutsTransform.GetChild(i).GetChild(0).gameObject);
+            }
+
+            if (Shortcuts[i]!=null)
+            {
+                GameObject newObject = Instantiate(Shortcuts[i], ShortcutsTransform.GetChild(i).position, Quaternion.identity);
+                if (newObject.GetComponent<MovableCube>() != null)
+                {
+                    newObject.GetComponent<MovableCube>().enabled = false;
+                }
+                if (newObject.GetComponent<wallscript>() != null)
+                {
+                    newObject.GetComponent<wallscript>().enabled = false;
+                }
+                if (newObject.GetComponent<PlayerMovement>() != null)
+                {
+                    newObject.GetComponent<PlayerMovement>().enabled = false;
+                }
+                if (newObject.GetComponent<PullerScript>() != null)
+                {
+                    newObject.GetComponent<PullerScript>().enabled = false;
+                }
+                //ajouter victory script
+                newObject.transform.SetParent(ShortcutsTransform.GetChild(i));
+            }
+        }
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+
+        movementinput = context.ReadValue<Vector2>();
+    }
+
+    public void OnVision(InputAction.CallbackContext context)
+    {
+
+        visioninput = context.ReadValue<Vector2>();
+    }
+
+    public void OnGrip(InputAction.CallbackContext context)
+    {
+        gripinput = context.ReadValue<float>();
+    }
+
+    void UpdateShortcuts(GameObject lastplaced)
+    {
+        GameObject[] newlist = new GameObject[10];
+        newlist[0]=lastplaced;
+        int Indice = 1;
+        for(int i = 0; i < 10; i++)
+        {
+            if(Shortcuts[i] != lastplaced && Indice<=9)
+            {
+                newlist[Indice] = Shortcuts[i];
+                Indice++;
+            }
+        }
+        Shortcuts = newlist;
+        ChangeShortCutIcons();
     }
 
     void ChangeIcon()
@@ -243,6 +329,8 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 minyplaced = (int)Mathf.Round(transform.position.y);
             }
 
+            UpdateShortcuts(objectlist[IndiceSelection]);
+
             pressedgrip = true;
         }
     }
@@ -258,7 +346,8 @@ public class PlayerCursorEditorScript : MonoBehaviour
             {
                 Vector2 newpos = acttransform.transform.position;
                 Destroy(acttransform.gameObject); //on détruit la transform qui se trouve là où on veut mettre un objet
-                Instantiate(objectlist[7], newpos, Quaternion.identity);
+                GameObject newfloor =Instantiate(objectlist[7], newpos, Quaternion.identity);
+                newfloor.transform.SetParent(ObjectsPlaced);
             }
         }
     }
@@ -293,7 +382,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
         return SaveString;
     }
 
-    void GenerateError(string message, bool toMainMenu)
+    public void GenerateError(string message, bool toMainMenu)
     {
         Transform CanvasParent = GameObject.Find("Canvas").transform;
         GameObject newerror = Instantiate(errormessage,Vector3.zero, Quaternion.identity);
@@ -302,9 +391,9 @@ public class PlayerCursorEditorScript : MonoBehaviour
         newerror.transform.localScale = Vector3.one;
         if(toMainMenu)
         {
-            newerror.transform.GetChild(0).gameObject.SetActive(false);
-            newerror.transform.GetChild(1).gameObject.SetActive(true);
-            newerror.transform.GetChild(1).gameObject.SetActive(true);
+            newerror.transform.GetChild(1).gameObject.SetActive(false);
+            newerror.transform.GetChild(2).gameObject.SetActive(true);
+            newerror.transform.GetChild(3).gameObject.SetActive(true);
         }
     }
 

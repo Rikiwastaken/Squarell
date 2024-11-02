@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class LevelSelectionScript : MonoBehaviour
 {
 
-    public int pagenumber=0;
+    public int pagenumber;
 
     private int numbertoshow;
 
@@ -18,8 +18,12 @@ public class LevelSelectionScript : MonoBehaviour
 
     public string[] listnames;
 
+    public TextMeshProUGUI pagetext;
+
     private void Start()
     {
+
+        pagenumber = 1;
         numbertoshow = buttons.childCount;
 
         if (System.IO.Directory.Exists(Application.persistentDataPath + "/SavedLevels/"))
@@ -43,14 +47,19 @@ public class LevelSelectionScript : MonoBehaviour
         
     }
 
+    private void FixedUpdate()
+    {
+        pagetext.text = pagenumber + "/" + ((int)(listpaths.Length / numbertoshow) + 1);
+    }
+
     void AffectNames()
     {
 
         int buttonID = 0;
 
-        for(int i = numbertoshow*pagenumber; i < listnames.Count(); i++)
+        for(int i = numbertoshow*(pagenumber-1); i < Mathf.Min(listnames.Count(),numbertoshow*pagenumber); i++)
         {
-            buttons.GetChild(i).gameObject.SetActive(true);
+            buttons.GetChild(buttonID).gameObject.SetActive(true);
             buttons.GetChild(buttonID).GetComponentInChildren<TextMeshProUGUI>().text = listnames[i];
             buttons.GetChild(buttonID).GetComponentInChildren<ButtonScript>().levelname = listnames[i];
             buttonID++;
@@ -64,17 +73,19 @@ public class LevelSelectionScript : MonoBehaviour
     }
     public void nextpage()
     {
-        if(listnames.Count()>(pagenumber+1)*numbertoshow)
+        if(listnames.Count()>(pagenumber)*numbertoshow)
         {
             pagenumber++;
+            AffectNames();
         }
     }
 
     public void previouspage()
     {
-        if(pagenumber>0)
+        if(pagenumber>1)
         {
             pagenumber--;
+            AffectNames();
         }
     }
 

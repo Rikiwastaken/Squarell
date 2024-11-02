@@ -16,6 +16,16 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
+    public void NextPage()
+    {
+        GameObject.Find("LevelSelector").GetComponent<LevelSelectionScript>().nextpage();
+    }
+
+    public void PrevPage()
+    {
+        GameObject.Find("LevelSelector").GetComponent<LevelSelectionScript>().previouspage();
+    }
+
     public void SaveScene()
     {
         GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().SaveLevel();
@@ -30,6 +40,11 @@ public class ButtonScript : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1.0f;
+    }
+
+    public void LoadMainMenuFromEditor()
+    {
+        GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().GenerateError("Return to Main Menu ?",true);
     }
 
 
