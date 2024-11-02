@@ -22,7 +22,6 @@ public class LevelSelectionScript : MonoBehaviour
 
     private void Start()
     {
-
         pagenumber = 1;
         numbertoshow = buttons.childCount;
 
@@ -36,7 +35,6 @@ public class LevelSelectionScript : MonoBehaviour
                 string newname = path;
                 string abstractpath = Application.persistentDataPath + "/SavedLevels/";
                 newname=newname.Substring((int)(abstractpath.Length), newname.Length-abstractpath.Length);
-                //newname = newname.Split('.')[0];
                 listnames[indice]=newname;
                 indice++;
             }

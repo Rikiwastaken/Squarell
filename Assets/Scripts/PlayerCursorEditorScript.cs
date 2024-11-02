@@ -46,7 +46,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     private bool FirstPlaced = true;
 
-    private string scenename;
+    public string scenename;
 
     public GameObject[] Shortcuts;
 
@@ -58,6 +58,18 @@ public class PlayerCursorEditorScript : MonoBehaviour
         cam = GameObject.Find("Main Camera");
         ObjectsPlaced = GameObject.Find("ObjectsPlaced").transform;
         InitializeInputs();
+
+
+        if(GameObject.Find("Info").GetComponent<Info>().leveltoload != "")
+        {
+            GameObject.Find("NameSelector").GetComponent<TMP_InputField>().text = GameObject.Find("Info").GetComponent<Info>().levelname;
+            GenerateRoomInEditor(GameObject.Find("Info").GetComponent<Info>().leveltoload);
+
+        }
+        
+
+        
+
     }
     
 
@@ -115,7 +127,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
         if(gripping)
         {
 
-            PlaceObject();
+            PlaceObject(IndiceSelection,true,transform.position);
 
         }
 
@@ -159,6 +171,58 @@ public class PlayerCursorEditorScript : MonoBehaviour
         }
     }
 
+    void GenerateRoomInEditor(string list)
+    {
+        string[] listalllines = list.Split('%');
+
+        for (int y = 0; y < listalllines.Length; y++)
+        {
+            ; string listinside = listalllines[y];
+            for (int x = 0; x < listinside.Length; x++)
+            {
+
+                Vector2 position = new Vector2(x, -y);
+
+                if (listinside[x].Equals('W')) //mur
+                {
+                    PlaceObject(5, false,position);
+                }
+                if (listinside[x].Equals('P')) //joueur
+                {
+                    PlaceObject(0, false, position);
+                }
+                if (listinside[x].Equals('M')) //objet qui bouge dans toutes les direction
+                {
+                    PlaceObject(2, false, position);
+                }
+                if (listinside[x].Equals('H')) //objet qui bouge que selon x
+                {
+                    PlaceObject(3, false, position);
+                }
+                if (listinside[x].Equals('V')) //objet qui bouge que selon y
+                {
+                    PlaceObject(4, false, position);
+                }
+                if (listinside[x].Equals('F')) //sol
+                {
+                    PlaceObject(7, false, position);
+                }
+                if (listinside[x].Equals('I')) // victory 
+                {
+                    PlaceObject(1, false, position);
+
+                }
+                if (listinside[x].Equals('S')) // cube that objects can be pulled through
+                {
+                    PlaceObject(6, false, position);
+                }
+
+
+            }
+        }
+
+    }
+
     void ChangeShortCutIcons()
     {
         for(int i =0; i<Shortcuts.Length;i++)
@@ -188,7 +252,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 {
                     newObject.GetComponent<PullerScript>().enabled = false;
                 }
-                //ajouter victory script
+                if(newObject.GetComponent<VictoryScript>() != null)
+                {
+                    newObject.GetComponent<VictoryScript>().enabled = false;
+                }
                 newObject.transform.SetParent(ShortcutsTransform.GetChild(i));
             }
         }
@@ -218,10 +285,13 @@ public class PlayerCursorEditorScript : MonoBehaviour
         int Indice = 1;
         for(int i = 0; i < 10; i++)
         {
-            if(Shortcuts[i] != lastplaced && Indice<=9)
+            if(Shortcuts.Length > i)
             {
-                newlist[Indice] = Shortcuts[i];
-                Indice++;
+                if (Shortcuts[i] != lastplaced && Indice <= 9)
+                {
+                    newlist[Indice] = Shortcuts[i];
+                    Indice++;
+                }
             }
         }
         Shortcuts = newlist;
@@ -262,22 +332,22 @@ public class PlayerCursorEditorScript : MonoBehaviour
         }
     }
 
-    void PlaceObject()
+    void PlaceObject(int Indice, bool updateshortcuts, Vector2 positiontoplace)
     {
-        if(!pressedgrip)
+        if(!pressedgrip || !updateshortcuts)
         {
             int nbchildren = ObjectsPlaced.childCount;
 
             for (int i = 0; i < nbchildren; i++)
             {
                 Transform acttransform = ObjectsPlaced.GetChild(i);
-                if (Mathf.Round(acttransform.position.x) == transform.position.x && Mathf.Round(acttransform.position.y) == transform.position.y)
+                if (Mathf.Round(acttransform.position.x) == positiontoplace.x && Mathf.Round(acttransform.position.y) == positiontoplace.y)
                 {
                     Destroy(acttransform.gameObject); //on détruit la transform qui se trouve là où on veut mettre un objet
                 }
             }
 
-            GameObject newObject = Instantiate(objectlist[IndiceSelection], transform.position, Quaternion.identity);
+            GameObject newObject = Instantiate(objectlist[Indice], positiontoplace, Quaternion.identity);
             if (newObject.GetComponent<MovableCube>() != null)
             {
                 newObject.GetComponent<MovableCube>().enabled = false;
@@ -288,7 +358,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
             }
             if (newObject.GetComponent<PlayerMovement>() != null)
             {
-                DeleteDuplicates(objectlist[IndiceSelection], transform.position);
+                DeleteDuplicates(objectlist[Indice], positiontoplace);
                 newObject.GetComponent<PlayerMovement>().enabled = false;
             }
             if (newObject.GetComponent<PullerScript>() != null)
@@ -301,35 +371,38 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
             if(FirstPlaced)
             {
-                maxxplaced = (int)Mathf.Round(transform.position.x);
-                maxyplaced = (int)Mathf.Round(transform.position.y);
-                minxplaced = (int)Mathf.Round(transform.position.x);
-                minyplaced = (int)Mathf.Round(transform.position.y);
+                maxxplaced = (int)Mathf.Round(positiontoplace.x);
+                maxyplaced = (int)Mathf.Round(positiontoplace.y);
+                minxplaced = (int)Mathf.Round(positiontoplace.x);
+                minyplaced = (int)Mathf.Round(positiontoplace.y);
                 FirstPlaced = false;
             }
 
 
-            if((int)Mathf.Round(transform.position.x)>maxxplaced)
+            if((int)Mathf.Round(positiontoplace.x)>maxxplaced)
             {
-                maxxplaced = (int)Mathf.Round(transform.position.x);
+                maxxplaced = (int)Mathf.Round(positiontoplace.x);
             }
 
-            if ((int)Mathf.Round(transform.position.y) > maxyplaced)
+            if ((int)Mathf.Round(positiontoplace.y) > maxyplaced)
             {
-                maxyplaced = (int)Mathf.Round(transform.position.y);
+                maxyplaced = (int)Mathf.Round(positiontoplace.y);
             }
 
-            if ((int)Mathf.Round(transform.position.x) < minxplaced)
+            if ((int)Mathf.Round(positiontoplace.x) < minxplaced)
             {
-                minxplaced = (int)Mathf.Round(transform.position.x);
+                minxplaced = (int)Mathf.Round(positiontoplace.x);
             }
 
-            if ((int)Mathf.Round(transform.position.y) < minyplaced)
+            if ((int)Mathf.Round(positiontoplace.y) < minyplaced)
             {
-                minyplaced = (int)Mathf.Round(transform.position.y);
+                minyplaced = (int)Mathf.Round(positiontoplace.y);
             }
-
-            UpdateShortcuts(objectlist[IndiceSelection]);
+            if(updateshortcuts)
+            {
+                UpdateShortcuts(objectlist[Indice]);
+            }
+            
 
             pressedgrip = true;
         }
@@ -351,14 +424,14 @@ public class PlayerCursorEditorScript : MonoBehaviour
             }
         }
     }
-    string GenerateSaveString()
+    public string GenerateSaveString()
     {
 
         int nbchildren = ObjectsPlaced.childCount;
 
         string SaveString = "";
 
-        for (int y=minyplaced; y<=maxyplaced; y++)
+        for (int y=maxyplaced; y>=minyplaced; y--)
         {
             for(int x=minxplaced; x<=maxxplaced; x++)
             {
@@ -373,7 +446,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 }
                 SaveString += next;
             }
-            if(y!=maxyplaced)
+            if(y!=minyplaced)
             {
                 SaveString += "%";
             }
@@ -397,11 +470,12 @@ public class PlayerCursorEditorScript : MonoBehaviour
         }
     }
 
-    public void SaveLevel()
+    public bool SaveLevel()
     {
-
+        bool worked = true;
         if(scenename == "Name" || scenename =="")
         {
+            worked = false;
             GenerateError("You have to enter a name.",false);
         }
         else
@@ -415,20 +489,32 @@ public class PlayerCursorEditorScript : MonoBehaviour
             if (Levelstring == "")
             {
                 GenerateError("Level is empty.", false);
+                worked = false;
             }
             else if (!Levelstring.Contains("P"))
             {
                 GenerateError("You have to place a Player.", false);
+                worked = false;
             }
             else if (!Levelstring.Contains("I"))
             {
                 GenerateError("You have to place a Victory Square.", false);
+                worked = false;
             }
             else
             {
-                System.IO.File.WriteAllText(Application.persistentDataPath + "/SavedLevels/" + scenename + ".txt", Levelstring);
+                if (scenename[scenename.Length-1]=='t' && scenename[scenename.Length - 2]=='x' && scenename[scenename.Length - 3] == 't' && scenename[scenename.Length - 4] == '.')
+                {
+                    System.IO.File.WriteAllText(Application.persistentDataPath + "/SavedLevels/" + scenename, Levelstring);
+                }
+                else
+                {
+                    System.IO.File.WriteAllText(Application.persistentDataPath + "/SavedLevels/" + scenename + ".txt", Levelstring);
+                }
+                
             }
         }
+        return worked;
     }
 
     string GetCorrespondingChar(Transform target)

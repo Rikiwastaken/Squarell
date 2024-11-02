@@ -8,6 +8,7 @@ public class Info : MonoBehaviour
 
     public string leveltoload;
     public string levelname;
+    public bool editorplaymode;
 
     // Start is called before the first frame update
     void Start()

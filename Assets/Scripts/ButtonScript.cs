@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class ButtonScript : MonoBehaviour
 {
 
     public string levelname;
+
+    public GameObject LevelDetailsPanel;
 
     public void DestroyParent()
     {
@@ -33,11 +36,16 @@ public class ButtonScript : MonoBehaviour
 
     public void LoadEditor()
     {
+
         SceneManager.LoadScene("LevelEditor");
+
     }
 
     public void LoadMainMenu()
     {
+        GameObject.Find("Info").GetComponent<Info>().levelname = "";
+        GameObject.Find("Info").GetComponent<Info>().leveltoload = "";
+        GameObject.Find("Info").GetComponent<Info>().editorplaymode = false;
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1.0f;
     }
@@ -62,7 +70,54 @@ public class ButtonScript : MonoBehaviour
     {
         GameObject.Find("Info").GetComponent<Info>().levelname = levelname;
         GameObject.Find("Info").GetComponent<Info>().leveltoload = System.IO.File.ReadAllText(Application.persistentDataPath + "/SavedLevels/"+levelname);
+        transform.parent.parent.gameObject.SetActive(false);
+        LevelDetailsPanel.SetActive(true);
+        LevelDetailsPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = levelname;
+    }
+
+    public void PlaySelectedLevel()
+    {
         SceneManager.LoadScene("InGameScene");
+    }
+
+    public void DeleteLevel()
+    {
+        System.IO.File.Delete(Application.persistentDataPath + "/SavedLevels/"+GameObject.Find("Info").GetComponent<Info>().levelname);
+        LoadMainMenu();
+    }
+
+    public void LoadMainMenuFromPlayMode()
+    {
+        if(GameObject.Find("Info").GetComponent<Info>().editorplaymode)
+        {
+            SceneManager.LoadScene("LevelEditor");
+        }
+        else
+        {
+            GameObject.Find("Info").GetComponent<Info>().levelname = "";
+            GameObject.Find("Info").GetComponent<Info>().leveltoload = "";
+            GameObject.Find("Info").GetComponent<Info>().editorplaymode = false;
+            SceneManager.LoadScene("MainMenu");
+        }
+        Time.timeScale = 1.0f;
+    }
+
+    public void Replay()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("InGameScene");
+    }
+
+    public void PlayLevelFromEditor()
+    {
+        if(GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().SaveLevel())
+        {
+            GameObject.Find("Info").GetComponent<Info>().leveltoload = GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().GenerateSaveString();
+            GameObject.Find("Info").GetComponent<Info>().levelname = GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().scenename;
+            GameObject.Find("Info").GetComponent<Info>().editorplaymode = true;
+            SceneManager.LoadScene("InGameScene");
+        }
+        
     }
 
 }
