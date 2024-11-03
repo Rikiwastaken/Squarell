@@ -61,7 +61,11 @@ public class MovableCube : MonoBehaviour
             justtargetted= false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
             distance = Vector2.zero;
-            PlayerCube.GetComponent<PlayerMovement>().Replace(transform, PlayerCube.GetComponent<PlayerMovement>().ReplaceVelocity);
+            if(!GetComponent<MovedScript>().moved)
+            {
+                PlayerCube.GetComponent<PlayerMovement>().Replace(transform, PlayerCube.GetComponent<PlayerMovement>().ReplaceVelocity);
+            }
+            
         }
     }
 

@@ -89,7 +89,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementinput == Vector2.zero)
         {
-            Replace(transform, ReplaceVelocity);
+            if(!GetComponentInChildren<MovedScript>().moved)
+            {
+                Replace(transform, ReplaceVelocity);
+            }
         }
         else
         {
