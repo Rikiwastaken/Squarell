@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 691584c485679684ab507e60417b4f44
+guid: edea6ecbac19a4a4c94483dc99baa863
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2171869769579782635
-    second: ConveyorBelt_0
+      213: -4122900309639778474
+    second: ConveyorBeltTurned_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ConveyorBelt_0
+      name: ConveyorBeltTurned_0
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +127,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 51e99cd93f7fbd1e0800000000000000
-      internalID: -2171869769579782635
+      spriteID: 65fa29f230488c6c0800000000000000
+      internalID: -4122900309639778474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_1
+      name: ConveyorBeltTurned_1
       rect:
         serializedVersion: 2
         x: 60
@@ -148,14 +148,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97d32e9b28e8205478c90be1e17c4325
-      internalID: -1608452142
+      spriteID: 0cadd2228729868478fbbb52eb64abee
+      internalID: 911623277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_2
+      name: ConveyorBeltTurned_2
       rect:
         serializedVersion: 2
         x: 0
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8b631423bf1b0b4182eca03e9730f08
-      internalID: -1937707863
+      spriteID: 5ee5d02dcffd4ed4d9d3cf0a170f181e
+      internalID: 829062309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_3
+      name: ConveyorBeltTurned_3
       rect:
         serializedVersion: 2
         x: 60
@@ -190,14 +190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8f2ea738499e354290f260cd8f5160b
-      internalID: 770979700
+      spriteID: 00c98e1134dc5e2499b508aa7fd4da15
+      internalID: 708414353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_4
+      name: ConveyorBeltTurned_4
       rect:
         serializedVersion: 2
         x: 0
@@ -211,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf454686ec0e5024ebac9cf159873de7
-      internalID: -1745830862
+      spriteID: 070c22f6c27645348afe08868ea7706f
+      internalID: -1988808804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_5
+      name: ConveyorBeltTurned_5
       rect:
         serializedVersion: 2
         x: 60
@@ -232,14 +232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9f41e809fa98c8458c352b94a065414
-      internalID: 612336346
+      spriteID: b3986709eecf0fc4dac5e3fddb28addf
+      internalID: 711618317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_6
+      name: ConveyorBeltTurned_6
       rect:
         serializedVersion: 2
         x: 0
@@ -253,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f97b7d48a73bf84a9e93eacc61ade1c
-      internalID: 1857009749
+      spriteID: 239216e50341492429b4be309a987546
+      internalID: -1154275895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_7
+      name: ConveyorBeltTurned_7
       rect:
         serializedVersion: 2
         x: 60
@@ -274,14 +274,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2221ee0108d802949b998d4a2f1c586a
-      internalID: 1708386493
+      spriteID: 363d3e49adbf480458b0408bdd62bcef
+      internalID: -57286319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_8
+      name: ConveyorBeltTurned_8
       rect:
         serializedVersion: 2
         x: 0
@@ -295,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0eebf66c774870d4690e8c3bdab6231d
-      internalID: 1660254516
+      spriteID: 0b51ce73ea8de434e953d1688da0ee41
+      internalID: 1333077408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ConveyorBelt_9
+      name: ConveyorBeltTurned_9
       rect:
         serializedVersion: 2
         x: 60
@@ -316,8 +316,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65735c9cc4b94934faf95db244eeb8e3
-      internalID: -1714376123
+      spriteID: a1774d91760b1024c837542bddcc26c3
+      internalID: -202511420
       vertices: []
       indices: 
       edges: []
@@ -325,7 +325,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 62dcfb05a5284074c8a374739ba6e800
+    spriteID: a9fa3330b7bf3f543a1a751d0155a6db
     internalID: 0
     vertices: []
     indices: 
@@ -333,16 +333,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ConveyorBelt_0: -2171869769579782635
-      ConveyorBelt_1: -1608452142
-      ConveyorBelt_2: -1937707863
-      ConveyorBelt_3: 770979700
-      ConveyorBelt_4: -1745830862
-      ConveyorBelt_5: 612336346
-      ConveyorBelt_6: 1857009749
-      ConveyorBelt_7: 1708386493
-      ConveyorBelt_8: 1660254516
-      ConveyorBelt_9: -1714376123
+      ConveyorBeltTurned_0: -4122900309639778474
+      ConveyorBeltTurned_1: 911623277
+      ConveyorBeltTurned_2: 829062309
+      ConveyorBeltTurned_3: 708414353
+      ConveyorBeltTurned_4: -1988808804
+      ConveyorBeltTurned_5: 711618317
+      ConveyorBeltTurned_6: -1154275895
+      ConveyorBeltTurned_7: -57286319
+      ConveyorBeltTurned_8: 1333077408
+      ConveyorBeltTurned_9: -202511420
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

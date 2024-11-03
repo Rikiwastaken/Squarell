@@ -11,12 +11,21 @@ public class ShowSelectedBloc : MonoBehaviour
     public GameObject movable;
     public GameObject horizontal;
     public GameObject vertical;
+    public GameObject FloorCable;
+    public GameObject Alimentation;
 
     public TextMeshProUGUI text;
 
+    private Vector3 initialscale;
+
+    private void Start()
+    {
+        initialscale = transform.localScale;
+    }
+
     private void FixedUpdate()
     {
-
+        transform.localScale = initialscale;
         selectedsprite = GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().objectlist[GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().IndiceSelection];
 
 
@@ -27,27 +36,44 @@ public class ShowSelectedBloc : MonoBehaviour
 
             if(selectedsprite == movable)
             {
+                DisableChildren();
                 transform.GetChild(0).gameObject.SetActive(true);
-                transform.GetChild(1).gameObject.SetActive(false);
-                transform.GetChild (2).gameObject.SetActive(false);
             }
             else if(selectedsprite == vertical)
             {
-                transform.GetChild(0).gameObject.SetActive(false);
+                DisableChildren();
                 transform.GetChild(1).gameObject.SetActive(true);
-                transform.GetChild(2).gameObject.SetActive(false);
             }
             else if (selectedsprite == horizontal)
             {
-                transform.GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(1).gameObject.SetActive(false);
+                DisableChildren();
                 transform.GetChild(2).gameObject.SetActive(true);
+            }
+            else if (selectedsprite == FloorCable)
+            {
+                DisableChildren();
+                transform.GetChild(3).gameObject.SetActive(true);
+            }
+            else if (selectedsprite == Alimentation)
+            {
+                DisableChildren();
+                transform.GetChild(4).gameObject.SetActive(true);
             }
             else
             {
-                transform.GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(1).gameObject.SetActive(false);
-                transform.GetChild(2).gameObject.SetActive(false);
+                DisableChildren();
+            }
+            if (selectedsprite.GetComponent<ConveyorBelt>() != null)
+            {
+                
+                if (selectedsprite.GetComponent<ConveyorBelt>().direction == 1)
+                {
+                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.z, transform.localScale.z);
+                }
+                if (selectedsprite.GetComponent<ConveyorBelt>().direction == 3)
+                {
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.z, transform.localScale.z);
+                }
             }
 
             text.text = selectedsprite.name;
@@ -62,6 +88,15 @@ public class ShowSelectedBloc : MonoBehaviour
 
        
         
+    }
+
+    void DisableChildren()
+    {
+        int i = transform.childCount-1;
+        for(int j = 0; j < i; j++)
+        {
+            transform.GetChild(j).gameObject.SetActive(false);
+        }
     }
 
 }

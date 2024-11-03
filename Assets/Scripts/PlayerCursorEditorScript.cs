@@ -258,6 +258,31 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 {
                     PlaceObject(8, false, position);
                 }
+                if (listinside[x].Equals("FC")) // Floor Cable 
+                {
+                    PlaceObject(14, false, position);
+
+                }
+                if (listinside[x].Equals("CN")) // Conveyor North 
+                {
+                    PlaceObject(12, false, position);
+
+                }
+                if (listinside[x].Equals("CS")) // Conveyor South 
+                {
+                    PlaceObject(13, false, position);
+
+                }
+                if (listinside[x].Equals("CE")) // Conveyor East 
+                {
+                    PlaceObject(10, false, position);
+
+                }
+                if (listinside[x].Equals("CW")) // Conveyor West 
+                {
+                    PlaceObject(11, false, position);
+
+                }
 
 
             }
@@ -309,6 +334,19 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 if (newObject.GetComponent<AlimentationScript>() != null)
                 {
                     newObject.GetComponent<AlimentationScript>().enabled = false;
+                }
+                if (newObject.GetComponent<ConveyorBelt>() != null)
+                {
+                    if (newObject.GetComponent<ConveyorBelt>().direction == 1)
+                    {
+                        newObject.transform.localScale = new Vector3(1, -1, 1);
+                    }
+                    if (newObject.GetComponent<ConveyorBelt>().direction == 3)
+                    {
+                        newObject.transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                    newObject.transform.GetChild(0).gameObject.SetActive(false);
+                    newObject.GetComponent<ConveyorBelt>().enabled = false;
                 }
                 newObject.transform.localScale = Vector3.one*1.75f;
                 newObject.transform.SetParent(ShortcutsTransform.GetChild(i));
@@ -432,6 +470,18 @@ public class PlayerCursorEditorScript : MonoBehaviour
             if (newObject.GetComponent<Cable>() != null)
             {
                 newObject.GetComponent<Cable>().enabled = false;
+            }
+            if (newObject.GetComponent<ConveyorBelt>() != null)
+            {
+                if(newObject.GetComponent<ConveyorBelt>().direction==1)
+                {
+                    newObject.transform.localScale = new Vector3(1, -1, 1);
+                }
+                if (newObject.GetComponent<ConveyorBelt>().direction == 3)
+                {
+                    newObject.transform.localScale = new Vector3(-1, 1, 1);
+                }
+                newObject.GetComponent<ConveyorBelt>().enabled = false;
             }
 
             newObject.transform.SetParent(ObjectsPlaced);
@@ -623,6 +673,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
         {
             res = "S";
         }
+        else if (name.Contains("FloorCable"))
+        {
+            res = "FC";
+        }
         else if (name.Contains("Cable"))
         {
             res = "C";
@@ -630,6 +684,22 @@ public class PlayerCursorEditorScript : MonoBehaviour
         else if (name.Contains("Alimentation"))
         {
             res = "A";
+        }
+        else if (name.Contains("Conveyor East"))
+        {
+            res = "CE";
+        }
+        else if (name.Contains("Conveyor West"))
+        {
+            res = "CW";
+        }
+        else if (name.Contains("Conveyor North"))
+        {
+            res = "CN";
+        }
+        else if (name.Contains("Conveyor South"))
+        {
+            res = "CS";
         }
 
         if (!last)

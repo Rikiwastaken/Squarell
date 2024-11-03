@@ -16,6 +16,11 @@ public class Instantiator : MonoBehaviour
     public GameObject seethrough;
     public GameObject Cable;
     public GameObject Alimentation;
+    public GameObject FloorCable;
+    public GameObject ConveyerNorth;
+    public GameObject ConveyerSouth;
+    public GameObject ConveyerWest;
+    public GameObject ConveyerEast;
 
     void Start()
     {
@@ -86,216 +91,45 @@ public class Instantiator : MonoBehaviour
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
                 }
-                if (listinside[x].Equals("C")) // victory 
+                if (listinside[x].Equals("C")) // Cable 
                 {
                     Instantiate(Cable, position, Quaternion.identity);
 
                 }
-                if (listinside[x].Equals("A")) // victory 
+                if (listinside[x].Equals("A")) // Alimentation 
                 {
                     Instantiate(Alimentation, position, Quaternion.identity);
+
+                }
+                if (listinside[x].Equals("FC")) // Floor Cable 
+                {
+                    Instantiate(FloorCable, position, Quaternion.identity);
+
+                }
+                if (listinside[x].Equals("CN")) // Conveyor North 
+                {
+                    Instantiate(ConveyerNorth, position, Quaternion.identity);
+
+                }
+                if (listinside[x].Equals("CS")) // Conveyor South 
+                {
+                    Instantiate(ConveyerSouth, position, Quaternion.identity);
+
+                }
+                if (listinside[x].Equals("CE")) // Conveyor East 
+                {
+                    Instantiate(ConveyerEast, position, Quaternion.identity);
+
+                }
+                if (listinside[x].Equals("CW")) // Conveyor West 
+                {
+                    Instantiate(ConveyerWest, position, Quaternion.identity);
 
                 }
 
 
             }
         }
-
-    }
-
-
-
-    ArrayList ExampleInitializerSimple()
-    {
-        ArrayList finallist = new ArrayList();
-
-        ArrayList list = new ArrayList();
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('P');
-        list.Add('F');
-        list.Add('W');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('W');
-        list.Add('M');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('W');
-        list.Add('F');
-        list.Add('I');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        return finallist;
-
-    }
-
-
-    ArrayList ExampleInitializer()
-    {
-        ArrayList finallist = new ArrayList();
-
-        ArrayList list = new ArrayList();
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('H');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('P');
-        list.Add('F');
-        list.Add('W');
-        list.Add('M');
-        list.Add('S');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('F');
-        list.Add('F');
-        list.Add('F');
-        list.Add('V');
-        list.Add('F');
-        list.Add('F');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        list = new ArrayList();
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-        list.Add('W');
-
-        finallist.Add(list);
-
-        return finallist;
 
     }
 

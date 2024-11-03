@@ -8,13 +8,11 @@ public class Cable : MonoBehaviour
 
     private ArrayList collisions = new ArrayList();
 
-    private int CD;
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.GetComponent<Cable>()!=null || collision.GetComponent<AlimentationScript>()!=null)
         {
-            if(!collisions.Contains(collision.gameObject))
+            if (!collisions.Contains(collision.gameObject))
             {
                 collisions.Add(collision.gameObject);
             }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7703417613017170132}
   - component: {fileID: 499276007464186042}
   m_Layer: 0
-  m_Name: Conveyor East
+  m_Name: Conveyor West
   m_TagString: conveyor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,10 +30,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6639816289944383262}
+  - {fileID: 821030829863315864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &669594117105488560
@@ -170,10 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb833bca708608458781c987f0131ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 2
+  direction: 3
   forceStrength: 2
   ForceVector: {x: 0, y: 0}
---- !u!1001 &6956512316590304941
+--- !u!1001 &4020519935194671147
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -234,8 +234,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a82a65e88ba419048b316d566899268c, type: 3}
---- !u!4 &6639816289944383262 stripped
+--- !u!4 &821030829863315864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4372751854292042163, guid: a82a65e88ba419048b316d566899268c, type: 3}
-  m_PrefabInstance: {fileID: 6956512316590304941}
+  m_PrefabInstance: {fileID: 4020519935194671147}
   m_PrefabAsset: {fileID: 0}
