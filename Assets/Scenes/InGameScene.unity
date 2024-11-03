@@ -1300,6 +1300,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: Cable
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: 798e9cdcc77f15a4cadfb7661e7f39f2, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: Alimentation
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: c7af3abfa7a31ed40a4374e99784ad46, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

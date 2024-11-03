@@ -98,15 +98,6 @@ public class PlayerMovement : MonoBehaviour
 
             GetComponent<Rigidbody2D>().velocity = movementinput * movementspeed;
 
-            //if (GetComponent<PullerScript>().direction == 1)
-            //{
-            //    GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-            //}
-
-            //if (GetComponent<PullerScript>().direction == -1)
-            //{
-            //    GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
-            //}
 
         }
     }

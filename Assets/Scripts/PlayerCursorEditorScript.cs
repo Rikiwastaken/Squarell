@@ -26,6 +26,8 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     private bool pressedgrip;
 
+    private float EraseInput;
+
     private GameObject cam;
 
     public GameObject[] objectlist;
@@ -102,6 +104,11 @@ public class PlayerCursorEditorScript : MonoBehaviour
             pressedgrip = false;
         }
 
+        if (!Inputcompo.FindAction("Erase").IsPressed())
+        {
+            EraseInput = 0f;
+        }
+
         if (gripinput != 0f)
         {
             gripping = true;
@@ -131,7 +138,14 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
         }
 
-       
+        if (EraseInput!=0f)
+        {
+
+            Eraser(transform.position);
+
+        }
+
+
 
     }
 
@@ -141,6 +155,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
         Inputcompo.FindAction("Move").performed += OnMove;
         Inputcompo.FindAction("Grip").performed += OnGrip;
         Inputcompo.FindAction("Movevision").performed += OnVision;
+        Inputcompo.FindAction("Erase").performed += OnErase;
         Inputcompo.FindAction("Select0").performed += OnShortcut;
         Inputcompo.FindAction("Select1").performed += OnShortcut;
         Inputcompo.FindAction("Select2").performed += OnShortcut;
@@ -153,6 +168,25 @@ public class PlayerCursorEditorScript : MonoBehaviour
         Inputcompo.FindAction("Select9").performed += OnShortcut;
 
 
+    }
+
+    public void OnErase(InputAction.CallbackContext context)
+    {
+        EraseInput = context.ReadValue<float>();
+    }
+
+    void Eraser(Vector2 position)
+    {
+        int nbchildren = ObjectsPlaced.childCount;
+
+        for (int i = 0; i < nbchildren; i++)
+        {
+            Transform acttransform = ObjectsPlaced.GetChild(i);
+            if(Vector2.Distance(acttransform.position, position)<0.05f)
+            {
+                Destroy(acttransform.gameObject);
+            }
+        }
     }
 
     public void OnShortcut(InputAction.CallbackContext context)
@@ -177,44 +211,52 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
         for (int y = 0; y < listalllines.Length; y++)
         {
-            ; string listinside = listalllines[y];
+            string[] listinside = listalllines[y].Split(',');
             for (int x = 0; x < listinside.Length; x++)
             {
 
                 Vector2 position = new Vector2(x, -y);
 
-                if (listinside[x].Equals('W')) //mur
+                if (listinside[x].Equals("W")) //mur
                 {
                     PlaceObject(5, false,position);
                 }
-                if (listinside[x].Equals('P')) //joueur
+                if (listinside[x].Equals("P")) //joueur
                 {
                     PlaceObject(0, false, position);
                 }
-                if (listinside[x].Equals('M')) //objet qui bouge dans toutes les direction
+                if (listinside[x].Equals("M")) //objet qui bouge dans toutes les direction
                 {
                     PlaceObject(2, false, position);
                 }
-                if (listinside[x].Equals('H')) //objet qui bouge que selon x
+                if (listinside[x].Equals("H")) //objet qui bouge que selon x
                 {
                     PlaceObject(3, false, position);
                 }
-                if (listinside[x].Equals('V')) //objet qui bouge que selon y
+                if (listinside[x].Equals("V")) //objet qui bouge que selon y
                 {
                     PlaceObject(4, false, position);
                 }
-                if (listinside[x].Equals('F')) //sol
+                if (listinside[x].Equals("F")) //sol
                 {
                     PlaceObject(7, false, position);
                 }
-                if (listinside[x].Equals('I')) // victory 
+                if (listinside[x].Equals("Vic")) // victory 
                 {
                     PlaceObject(1, false, position);
 
                 }
-                if (listinside[x].Equals('S')) // cube that objects can be pulled through
+                if (listinside[x].Equals("S")) // cube that objects can be pulled through
                 {
                     PlaceObject(6, false, position);
+                }
+                if (listinside[x].Equals("C")) // Cable
+                {
+                    PlaceObject(9, false, position);
+                }
+                if (listinside[x].Equals("A")) // Alimentation
+                {
+                    PlaceObject(8, false, position);
                 }
 
 
@@ -256,6 +298,19 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 {
                     newObject.GetComponent<VictoryScript>().enabled = false;
                 }
+                if (newObject.GetComponent<Cable>() != null)
+                {
+                    newObject.GetComponent<Cable>().enabled = false;
+                }
+                if (newObject.GetComponent<Replacer>() != null)
+                {
+                    newObject.GetComponent<Replacer>().enabled = false;
+                }
+                if (newObject.GetComponent<AlimentationScript>() != null)
+                {
+                    newObject.GetComponent<AlimentationScript>().enabled = false;
+                }
+                newObject.transform.localScale = Vector3.one*1.75f;
                 newObject.transform.SetParent(ShortcutsTransform.GetChild(i));
             }
         }
@@ -365,7 +420,19 @@ public class PlayerCursorEditorScript : MonoBehaviour
             {
                 newObject.GetComponent<PullerScript>().enabled = false;
             }
-            //ajouter victory script
+            if(newObject.GetComponent<VictoryScript>()!=null)
+            {
+                newObject.GetComponent<VictoryScript>().enabled = false;
+                DeleteDuplicates(objectlist[Indice], positiontoplace);
+            }
+            if (newObject.GetComponent<AlimentationScript>() != null)
+            {
+                newObject.GetComponent<AlimentationScript>().enabled = false;
+            }
+            if (newObject.GetComponent<Cable>() != null)
+            {
+                newObject.GetComponent<Cable>().enabled = false;
+            }
 
             newObject.transform.SetParent(ObjectsPlaced);
 
@@ -415,7 +482,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
         for (int i = 0; i < nbchildren; i++)
         {
             Transform acttransform = ObjectsPlaced.GetChild(i);
-            if ((Mathf.Round(acttransform.position.x) != coordinates.x || Mathf.Round(acttransform.position.y) == coordinates.y) && acttransform.name.Contains(type.transform.name))
+            if ((Mathf.Round(acttransform.position.x) != coordinates.x || Mathf.Round(acttransform.position.y) != coordinates.y) && acttransform.name.Contains(type.transform.name))
             {
                 Vector2 newpos = acttransform.transform.position;
                 Destroy(acttransform.gameObject); //on détruit la transform qui se trouve là où on veut mettre un objet
@@ -438,15 +505,20 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 string next = "F";
                 for (int i = 0; i < nbchildren; i++)
                 {
+                    bool last = false;
+                    if(i==nbchildren-1)
+                    {
+                        last=true;
+                    }
                     Transform acttransform = ObjectsPlaced.GetChild(i);
                     if (Mathf.Round(acttransform.position.x) == x && Mathf.Round(acttransform.position.y) == y)
                     {
-                        next = GetCorrespondingChar(acttransform);
+                        next = GetCorrespondingChar(acttransform,last);
                     }
                 }
                 SaveString += next;
             }
-            if(y!=minyplaced)
+            if (y!=minyplaced)
             {
                 SaveString += "%";
             }
@@ -517,7 +589,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
         return worked;
     }
 
-    string GetCorrespondingChar(Transform target)
+    string GetCorrespondingChar(Transform target,bool last)
     {
         string name = target.name;
 
@@ -545,12 +617,26 @@ public class PlayerCursorEditorScript : MonoBehaviour
         }
         else if (name.Contains("Victory"))
         {
-            res = "I";
+            res = "Vic";
         }
         else if (name.Contains("See"))
         {
             res = "S";
         }
+        else if (name.Contains("Cable"))
+        {
+            res = "C";
+        }
+        else if (name.Contains("Alimentation"))
+        {
+            res = "A";
+        }
+
+        if (!last)
+        {
+            res += ",";
+        }
+
         return res;
 
     }

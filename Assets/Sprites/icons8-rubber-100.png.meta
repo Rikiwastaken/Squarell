@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b7bec8d303ec8d543a17b6dc378217e5
+guid: dae45c8d78618c446a2c3fa39a92b5df
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6709884405516033698
-    second: emptyoutline_0
+      213: 1036863106987652755
+    second: icons8-rubber-100_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 514
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: emptyoutline_0
+      name: icons8-rubber-100_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 5
+        y: 9
+        width: 86
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e51a8450fa3b1e2a0800000000000000
-      internalID: -6709884405516033698
+      spriteID: 396f4b4908da36e00800000000000000
+      internalID: 1036863106987652755
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      emptyoutline_0: -6709884405516033698
+      icons8-rubber-100_0: 1036863106987652755
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

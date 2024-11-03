@@ -14,6 +14,8 @@ public class Instantiator : MonoBehaviour
     public GameObject floor;
     public GameObject victory;
     public GameObject seethrough;
+    public GameObject Cable;
+    public GameObject Alimentation;
 
     void Start()
     {
@@ -33,56 +35,66 @@ public class Instantiator : MonoBehaviour
 
         for (int y = 0; y < listalllines.Length; y++)
         {
-;           string listinside=listalllines[y];
+;           string[] listinside =listalllines[y].Split(',');
             for (int x = 0; x < listinside.Length; x++)
             {
 
                 Vector2 position = new Vector2(x, -y);
 
-                if(listinside[x].Equals('W')) //mur
+                if(listinside[x].Equals("W")) //mur
                 {
                     GameObject newwall =Instantiate(wall, position,Quaternion.identity);
                     newwall.transform.SetParent(GameObject.Find("Walls").transform);
                 }
-                if (listinside[x].Equals('P')) //joueur
+                if (listinside[x].Equals("P")) //joueur
                 {
                     Instantiate(player, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
                 }
-                if (listinside[x].Equals('M')) //objet qui bouge dans toutes les direction
+                if (listinside[x].Equals("M")) //objet qui bouge dans toutes les direction
                 {
                     Instantiate(movable, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
                 }
-                if (listinside[x].Equals('H')) //objet qui bouge que selon x
+                if (listinside[x].Equals("H")) //objet qui bouge que selon x
                 {
                     Instantiate(horizontal, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
                 }
-                if (listinside[x].Equals('V')) //objet qui bouge que selon y
+                if (listinside[x].Equals("V")) //objet qui bouge que selon y
                 {
                     Instantiate(vertical, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
                 }
-                if (listinside[x].Equals('F')) //sol
+                if (listinside[x].Equals("F")) //sol
                 {
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
                 }
-                if (listinside[x].Equals('I')) // victory 
+                if (listinside[x].Equals("Vic")) // victory 
                 {
                     Instantiate(victory, position, Quaternion.identity);
 
                 }
-                if (listinside[x].Equals('S')) // cube that objects can be pulled through
+                if (listinside[x].Equals("S")) // cube that objects can be pulled through
                 {
                     Instantiate(seethrough, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
+                }
+                if (listinside[x].Equals("C")) // victory 
+                {
+                    Instantiate(Cable, position, Quaternion.identity);
+
+                }
+                if (listinside[x].Equals("A")) // victory 
+                {
+                    Instantiate(Alimentation, position, Quaternion.identity);
+
                 }
 
 

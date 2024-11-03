@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Erase",
+                    "type": "Button",
+                    "id": "a8b57344-2178-4dfd-bd19-3130a6d1e210",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -352,6 +361,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3352390-f388-4678-8aac-9636e72a85b6",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Erase",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
