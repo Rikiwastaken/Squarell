@@ -555,19 +555,19 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 string next = "F";
                 for (int i = 0; i < nbchildren; i++)
                 {
-                    bool last = false;
-                    if(i==nbchildren-1)
-                    {
-                        last=true;
-                    }
                     Transform acttransform = ObjectsPlaced.GetChild(i);
                     if (Mathf.Round(acttransform.position.x) == x && Mathf.Round(acttransform.position.y) == y)
                     {
-                        next = GetCorrespondingChar(acttransform,last);
+                        next = GetCorrespondingChar(acttransform);
                     }
+                }
+                if(x!=maxxplaced)
+                {
+                    next += ",";
                 }
                 SaveString += next;
             }
+            
             if (y!=minyplaced)
             {
                 SaveString += "%";
@@ -618,7 +618,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 GenerateError("You have to place a Player.", false);
                 worked = false;
             }
-            else if (!Levelstring.Contains("I"))
+            else if (!Levelstring.Contains("Vic"))
             {
                 GenerateError("You have to place a Victory Square.", false);
                 worked = false;
@@ -639,7 +639,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
         return worked;
     }
 
-    string GetCorrespondingChar(Transform target,bool last)
+    string GetCorrespondingChar(Transform target)
     {
         string name = target.name;
 
@@ -700,11 +700,6 @@ public class PlayerCursorEditorScript : MonoBehaviour
         else if (name.Contains("Conveyor South"))
         {
             res = "CS";
-        }
-
-        if (!last)
-        {
-            res += ",";
         }
 
         return res;

@@ -9,7 +9,7 @@ public class CamFollower : MonoBehaviour
 
     void FixedUpdate()
     {
-        PlayerCube = GameObject.Find("PlayerCube(Clone)");
+        PlayerCube = GameObject.Find("Player(Clone)");
 
         if(PlayerCube != null )
         {

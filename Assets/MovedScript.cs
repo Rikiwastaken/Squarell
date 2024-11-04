@@ -8,10 +8,13 @@ public class MovedScript : MonoBehaviour
     public bool moved;
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject);
         if(collision.transform.GetComponent<ConveyorBelt>()!=null)
         {
-            moved = true;
+            if(collision.transform.GetComponent<ConveyorBelt>().powered)
+            {
+                moved = true;
+            }
+            
         }
     }
 
@@ -27,7 +30,10 @@ public class MovedScript : MonoBehaviour
     {
         if (collision.transform.GetComponent<ConveyorBelt>() != null)
         {
-            moved = true;
+            if (collision.transform.GetComponent<ConveyorBelt>().powered)
+            {
+                moved = true;
+            }
         }
     }
 

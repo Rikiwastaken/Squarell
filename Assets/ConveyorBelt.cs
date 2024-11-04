@@ -11,7 +11,7 @@ public class ConveyorBelt : MonoBehaviour
 
     public Vector2 ForceVector;
 
-    private bool powered;
+    public bool powered;
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -63,7 +63,7 @@ public class ConveyorBelt : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         transform.position = new Vector2((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y));
 
@@ -78,11 +78,11 @@ public class ConveyorBelt : MonoBehaviour
 
         if(powered)
         {
-            GetComponent<Animator>().speed = 1f;
+            GetComponent<Animator>().enabled = true;
         }
         else
         {
-            GetComponent<Animator>().speed = 0f;
+            GetComponent<Animator>().enabled = false;
         }
 
     }

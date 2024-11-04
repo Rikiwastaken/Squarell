@@ -1305,9 +1305,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7238830793604638306, guid: 798e9cdcc77f15a4cadfb7661e7f39f2, type: 3}
     - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: FloorCable
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: a82a65e88ba419048b316d566899268c, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
       propertyPath: Alimentation
       value: 
       objectReference: {fileID: 7238830793604638306, guid: c7af3abfa7a31ed40a4374e99784ad46, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: ConveyerEast
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: d110e49d1f306444e9b4feec5259054c, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: ConveyerWest
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: 7a9f270172d17844a8f3c0b9abffb172, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: ConveyerNorth
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: 2008ce24faad8c74ca2ef1a3f21f8518, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: ConveyerSouth
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: 3fd1eba72ff8604408843c16f0f1b7da, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
