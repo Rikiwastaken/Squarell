@@ -278,9 +278,9 @@ public class PlayerCursorEditorScript : MonoBehaviour
                     PlaceObject(10, false, position);
 
                 }
-                if (listinside[x].Equals("CW")) // Conveyor West 
+                if (listinside[x].Equals("MC")) // Movable Cable
                 {
-                    PlaceObject(11, false, position);
+                    PlaceObject(15, false, position);
 
                 }
 
@@ -326,6 +326,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 if (newObject.GetComponent<Cable>() != null)
                 {
                     newObject.GetComponent<Cable>().enabled = false;
+                }
+                if (newObject.GetComponentInChildren<Cable>() != null)
+                {
+                    newObject.GetComponentInChildren<Cable>().enabled = false;
                 }
                 if (newObject.GetComponent<Replacer>() != null)
                 {
@@ -470,6 +474,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
             if (newObject.GetComponent<Cable>() != null)
             {
                 newObject.GetComponent<Cable>().enabled = false;
+            }
+            if (newObject.GetComponentInChildren<Cable>() != null)
+            {
+                newObject.GetComponentInChildren<Cable>().enabled = false;
             }
             if (newObject.GetComponent<ConveyorBelt>() != null)
             {
@@ -653,6 +661,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
         {
             res = "V";
         }
+        else if (name.Contains("Movable Cable"))
+        {
+            res = "MC";
+        }
         else if (name.Contains("Movable"))
         {
             res = "M";
@@ -701,6 +713,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
         {
             res = "CS";
         }
+        
 
         return res;
 

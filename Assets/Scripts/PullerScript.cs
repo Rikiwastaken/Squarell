@@ -29,7 +29,7 @@ public class PullerScript : MonoBehaviour
             direction = activetriangle.GetComponent<TriangleHit>().direction;
             foreach (GameObject go in activetrianglelist)
             {
-                if (Vector2.Distance(go.transform.position, transform.position) <= range+0.1f)
+                if (Vector2.Distance(go.transform.position, transform.position) <= range+0.1f && go.GetComponent<MovableCube>()!=null)
                 {
                     if (target != null)
                     {
