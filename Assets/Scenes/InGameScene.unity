@@ -1332,6 +1332,14 @@ PrefabInstance:
       propertyPath: ConveyerSouth
       value: 
       objectReference: {fileID: 7238830793604638306, guid: 3fd1eba72ff8604408843c16f0f1b7da, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: VerticalMovableCube
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: 2e850eab7d06e6141969f41f214aa5e4, type: 3}
+    - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
+      propertyPath: HorizontalMovableCube
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: de41f07e0007fae4b8e65b2ac10dbd3f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

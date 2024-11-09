@@ -13,6 +13,9 @@ public class ShowSelectedBloc : MonoBehaviour
     public GameObject vertical;
     public GameObject FloorCable;
     public GameObject Alimentation;
+    public GameObject Movablecable;
+    public GameObject HorizontalMovableCable;
+    public GameObject VerticalMovableCable;
 
     public TextMeshProUGUI text;
 
@@ -34,17 +37,17 @@ public class ShowSelectedBloc : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = selectedsprite.GetComponent<SpriteRenderer>().sprite;
             GetComponent<SpriteRenderer>().color = selectedsprite.GetComponent<SpriteRenderer>().color;
 
-            if(selectedsprite == movable)
+            if(selectedsprite == movable || selectedsprite == Movablecable)
             {
                 DisableChildren();
                 transform.GetChild(0).gameObject.SetActive(true);
             }
-            else if(selectedsprite == vertical)
+            else if(selectedsprite == vertical || selectedsprite == VerticalMovableCable)
             {
                 DisableChildren();
                 transform.GetChild(1).gameObject.SetActive(true);
             }
-            else if (selectedsprite == horizontal)
+            else if (selectedsprite == horizontal || selectedsprite == HorizontalMovableCable)
             {
                 DisableChildren();
                 transform.GetChild(2).gameObject.SetActive(true);

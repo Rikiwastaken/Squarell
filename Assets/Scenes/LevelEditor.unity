@@ -1742,6 +1742,9 @@ MonoBehaviour:
   vertical: {fileID: 7238830793604638306, guid: 238dd712923f9d64685e5f2ee051129c, type: 3}
   FloorCable: {fileID: 7238830793604638306, guid: a82a65e88ba419048b316d566899268c, type: 3}
   Alimentation: {fileID: 7238830793604638306, guid: c7af3abfa7a31ed40a4374e99784ad46, type: 3}
+  Movablecable: {fileID: 7238830793604638306, guid: 22d469286cf08bd4f8fb5f2416bd0107, type: 3}
+  HorizontalMovableCable: {fileID: 7238830793604638306, guid: de41f07e0007fae4b8e65b2ac10dbd3f, type: 3}
+  VerticalMovableCable: {fileID: 7238830793604638306, guid: 2e850eab7d06e6141969f41f214aa5e4, type: 3}
   text: {fileID: 1773624397}
 --- !u!222 &560764032
 CanvasRenderer:
@@ -5207,7 +5210,7 @@ PrefabInstance:
       objectReference: {fileID: 990225691}
     - target: {fileID: 5522261335394438905, guid: 5aebf9f9405d57849984d024ed08b76e, type: 3}
       propertyPath: objectlist.Array.size
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5522261335394438905, guid: 5aebf9f9405d57849984d024ed08b76e, type: 3}
       propertyPath: 'Shortcuts.Array.data[0]'
@@ -5273,6 +5276,14 @@ PrefabInstance:
       propertyPath: 'objectlist.Array.data[15]'
       value: 
       objectReference: {fileID: 7238830793604638306, guid: 22d469286cf08bd4f8fb5f2416bd0107, type: 3}
+    - target: {fileID: 5522261335394438905, guid: 5aebf9f9405d57849984d024ed08b76e, type: 3}
+      propertyPath: 'objectlist.Array.data[16]'
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: de41f07e0007fae4b8e65b2ac10dbd3f, type: 3}
+    - target: {fileID: 5522261335394438905, guid: 5aebf9f9405d57849984d024ed08b76e, type: 3}
+      propertyPath: 'objectlist.Array.data[17]'
+      value: 
+      objectReference: {fileID: 7238830793604638306, guid: 2e850eab7d06e6141969f41f214aa5e4, type: 3}
     - target: {fileID: 5940987371817707577, guid: 5aebf9f9405d57849984d024ed08b76e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -652,18 +652,25 @@ public class PlayerCursorEditorScript : MonoBehaviour
         string name = target.name;
 
         string res = "F";
-
-        if(name.Contains("Horizontal"))
+        if(name.Contains("Horizontal Movable Cable"))
+        {
+            res = "HMC";
+        }
+        else if(name.Contains("Vertical Movable Cable"))
+        {
+            res = "VMC";
+        }
+        else if (name.Contains("Movable Cable"))
+        {
+            res = "MC";
+        }
+        else if (name.Contains("Horizontal"))
         {
             res = "H";
         }
         else if (name.Contains("Vertical"))
         {
             res = "V";
-        }
-        else if (name.Contains("Movable Cable"))
-        {
-            res = "MC";
         }
         else if (name.Contains("Movable"))
         {

@@ -22,6 +22,8 @@ public class Instantiator : MonoBehaviour
     public GameObject ConveyerWest;
     public GameObject ConveyerEast;
     public GameObject MovableCube;
+    public GameObject HorizontalMovableCube;
+    public GameObject VerticalMovableCube;
 
     void Start()
     {
@@ -131,6 +133,20 @@ public class Instantiator : MonoBehaviour
                 if (listinside[x].Equals("MC")) // Conveyor West 
                 {
                     Instantiate(MovableCube, position, Quaternion.identity);
+                    GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
+                    newfloor.transform.SetParent(GameObject.Find("Floors").transform);
+
+                }
+                if (listinside[x].Equals("HMC")) // Conveyor West 
+                {
+                    Instantiate(HorizontalMovableCube, position, Quaternion.identity);
+                    GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
+                    newfloor.transform.SetParent(GameObject.Find("Floors").transform);
+
+                }
+                if (listinside[x].Equals("VMC")) // Conveyor West 
+                {
+                    Instantiate(VerticalMovableCube, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
 
