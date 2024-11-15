@@ -283,7 +283,11 @@ public class PlayerCursorEditorScript : MonoBehaviour
                     PlaceObject(15, false, position);
 
                 }
+                if (listinside[x].Equals("D")) // Door
+                {
+                    PlaceObject(18, false, position);
 
+                }
 
             }
         }
@@ -720,7 +724,11 @@ public class PlayerCursorEditorScript : MonoBehaviour
         {
             res = "CS";
         }
-        
+        else if (name.Contains("Door"))
+        {
+            res = "D";
+        }
+
 
         return res;
 
