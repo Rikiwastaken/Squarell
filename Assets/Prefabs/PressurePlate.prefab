@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0f54178e6db9d7e4399b0840feb40a1d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3cb0ff083befc147bafd590de0fd4e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 9181263628443786751}
   - component: {fileID: 2896901088590455171}
   m_Layer: 0
-  m_Name: Alimentation
+  m_Name: PressurePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,5 +233,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3691c86cdb1cade4eb068e17c1ec6983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isalim: 1
   powered: 0

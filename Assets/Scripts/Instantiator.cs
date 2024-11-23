@@ -16,6 +16,7 @@ public class Instantiator : MonoBehaviour
     public GameObject seethrough;
     public GameObject Cable;
     public GameObject Alimentation;
+    public GameObject PressurePlate;
     public GameObject FloorCable;
     public GameObject ConveyerNorth;
     public GameObject ConveyerSouth;
@@ -103,6 +104,11 @@ public class Instantiator : MonoBehaviour
                 if (listinside[x].Equals("A")) // Alimentation 
                 {
                     Instantiate(Alimentation, position, Quaternion.identity);
+
+                }
+                if (listinside[x].Equals("PP")) // Alimentation 
+                {
+                    Instantiate(PressurePlate, position, Quaternion.identity);
 
                 }
                 if (listinside[x].Equals("FC")) // Floor Cable 

@@ -13,6 +13,7 @@ public class ShowSelectedBloc : MonoBehaviour
     public GameObject vertical;
     public GameObject FloorCable;
     public GameObject Alimentation;
+    public GameObject PressurePlate;
     public GameObject Movablecable;
     public GameObject HorizontalMovableCable;
     public GameObject VerticalMovableCable;
@@ -61,6 +62,11 @@ public class ShowSelectedBloc : MonoBehaviour
             {
                 DisableChildren();
                 transform.GetChild(4).gameObject.SetActive(true);
+            }
+            else if (selectedsprite == PressurePlate)
+            {
+                DisableChildren();
+                transform.GetChild(5).gameObject.SetActive(true);
             }
             else
             {

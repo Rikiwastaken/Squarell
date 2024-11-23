@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AlimentationScript : MonoBehaviour
 {
+
+    public bool isalim;
+
     public bool powered;
 
     private ArrayList visitedcables;
@@ -12,19 +15,31 @@ public class AlimentationScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(Vector2.Distance(collision.transform.position, transform.position)<=0.1f)
+        if(!isalim)
         {
-            powered = true;
+            if (Vector2.Distance(collision.transform.position, transform.position) <= 0.1f)
+            {
+                powered = true;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        powered = false;
+        if(!isalim)
+        {
+            powered = false;
+        }
+        
     }
 
     private void FixedUpdate()
     {
+        if(isalim)
+        {
+            powered=true;
+        }
+
         transform.position = new Vector2((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y));
         if(cabledelay > 0 )
         {

@@ -258,6 +258,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 {
                     PlaceObject(8, false, position);
                 }
+                if (listinside[x].Equals("PP")) // PresurePlate
+                {
+                    PlaceObject(19, false, position);
+                }
                 if (listinside[x].Equals("FC")) // Floor Cable 
                 {
                     PlaceObject(14, false, position);
@@ -707,6 +711,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
         else if (name.Contains("Alimentation"))
         {
             res = "A";
+        }
+        else if (name.Contains("PressurePlate"))
+        {
+            res = "PP";
         }
         else if (name.Contains("Conveyor East"))
         {

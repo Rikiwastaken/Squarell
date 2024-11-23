@@ -1319,7 +1319,7 @@ PrefabInstance:
     - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
       propertyPath: Alimentation
       value: 
-      objectReference: {fileID: 7238830793604638306, guid: c7af3abfa7a31ed40a4374e99784ad46, type: 3}
+      objectReference: {fileID: 7238830793604638306, guid: f032f3d43b7269346a479c2e84cfca3c, type: 3}
     - target: {fileID: 9113641471126336115, guid: bffcd043ef5798142abfe2fee5b488b4, type: 3}
       propertyPath: ConveyerEast
       value: 
