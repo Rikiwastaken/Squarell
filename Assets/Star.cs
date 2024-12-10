@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Star : MonoBehaviour
@@ -8,7 +9,15 @@ public class Star : MonoBehaviour
     public Vector2 mvtspeed;
     public float rotation;
 
+    private float lightvalue;
+
     // Update is called once per frame
+
+    private void Start()
+    {
+        lightvalue = Random.Range(0, 0.9f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f-lightvalue);
+    }
     void FixedUpdate()
     {
         GetComponent<Rigidbody2D>().velocity = mvtspeed;
@@ -29,5 +38,6 @@ public class Star : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x, 12);
         }
+        
     }
 }
