@@ -88,6 +88,8 @@ public class Instantiator : MonoBehaviour
                 if (listinside[x].Equals("Vic")) // victory 
                 {
                     Instantiate(victory, position, Quaternion.identity);
+                    GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
+                    newfloor.transform.SetParent(GameObject.Find("Floors").transform);
 
                 }
                 if (listinside[x].Equals("S")) // cube that objects can be pulled through

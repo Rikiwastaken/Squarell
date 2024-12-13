@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5938959898484404854}
   - component: {fileID: 9181263628443786751}
   - component: {fileID: -1134074855217237124}
+  - component: {fileID: 9020061830993163354}
   m_Layer: 0
   m_Name: Victory
   m_TagString: Untagged
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9603826, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: -477789389410734736, guid: 445ffae0b6eee8a40b77d9d0a9994b52, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -160,3 +161,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b3994c7e372ee4f96de091b708eb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &9020061830993163354
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238830793604638306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0ca2f6c02e0d384686c9b57266bdb2f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
