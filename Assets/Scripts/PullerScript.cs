@@ -26,6 +26,7 @@ public class PullerScript : MonoBehaviour
         activetrianglelist = activetriangle.GetComponent<TriangleHit>().hitlist;
         if (grippressed)
         {
+            GetComponent<Animator>().SetBool("Hand",true);
             direction = activetriangle.GetComponent<TriangleHit>().direction;
             foreach (GameObject go in activetrianglelist)
             {
@@ -56,6 +57,7 @@ public class PullerScript : MonoBehaviour
         }
         else
         {
+            GetComponent<Animator>().SetBool("Hand", false);
             direction = 0;
             target = null;
         }

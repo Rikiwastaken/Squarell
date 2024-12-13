@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mvtspeed: {x: 0.3, y: -0.3}
-  rotation: -0.2
+  rotation: 0.5
 --- !u!50 &1001783412995708025
 Rigidbody2D:
   serializedVersion: 4

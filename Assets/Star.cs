@@ -17,6 +17,8 @@ public class Star : MonoBehaviour
     {
         lightvalue = Random.Range(0, 0.9f);
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f-lightvalue);
+        rotation *= Random.Range(-1f, 1f);
+        GetComponent<Rigidbody2D>().transform.rotation = Quaternion.Euler( new Vector3(0f, 0f, Random.Range(0f, 360f)));
     }
     void FixedUpdate()
     {
