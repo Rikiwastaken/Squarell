@@ -19,16 +19,44 @@ public class ConveyorBelt : MonoBehaviour
         {
             if(powered)
             {
-                if(direction <=1)
+
+                if(other.GetComponent<PlayerMovement>())
                 {
-                    other.GetComponent<Rigidbody2D>().velocity = (ForceVector);
-                    other.transform.position = new Vector2(transform.position.x, other.transform.position.y);
+
+                    Vector2 moveinput = other.GetComponent<PlayerMovement>().movementinput;
+
+                    if (moveinput != Vector2.zero)
+                    {
+                        other.GetComponent<Rigidbody2D>().velocity = (ForceVector) + moveinput * other.GetComponent<PlayerMovement>().movementspeed;
+                        
+                    }
+                    else
+                    {
+                        if (direction <= 1)
+                        {
+                            other.GetComponent<Rigidbody2D>().velocity = (ForceVector);
+                        }
+                        else
+                        {
+                            other.GetComponent<Rigidbody2D>().velocity = (ForceVector);
+                        }
+                    }
                 }
                 else
                 {
-                    other.GetComponent<Rigidbody2D>().velocity = (ForceVector);
-                    other.transform.position = new Vector2(other.transform.position.x, transform.position.y);
+                    if (direction <= 1)
+                    {
+                        other.GetComponent<Rigidbody2D>().velocity = (ForceVector);
+                        other.transform.position = new Vector2(transform.position.x, other.transform.position.y);
+                    }
+                    else
+                    {
+                        other.GetComponent<Rigidbody2D>().velocity = (ForceVector);
+                        other.transform.position = new Vector2(other.transform.position.x, transform.position.y);
+                    }
                 }
+
+                
                 
             }
             

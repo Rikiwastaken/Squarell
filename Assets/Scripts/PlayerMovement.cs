@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public InputActionAsset Inputcompo;
 
-    private Vector2 movementinput;
+    public Vector2 movementinput;
 
     private Vector2 visioninput;
 
