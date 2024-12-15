@@ -100,5 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 7921981222325880807, guid: 3d89e923d18a45249badfab7b1703588, type: 3}
+  Animationtoshow: {fileID: 0}
   nbrang: 10
   starparrang: 10
+  mvtspeed: {x: 0.3, y: -0.3}
+  rotation: 0.5
+  size: 3

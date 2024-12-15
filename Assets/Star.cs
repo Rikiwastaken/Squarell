@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Star : MonoBehaviour
@@ -11,10 +12,22 @@ public class Star : MonoBehaviour
 
     private float lightvalue;
 
+    public AnimatorController Animationtoshow;
+    public Sprite SpriteToShow;
+
     // Update is called once per frame
 
     private void Start()
     {
+        if (Animationtoshow != null)
+        {
+            GetComponent<Animator>().runtimeAnimatorController = Animationtoshow;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite=SpriteToShow;
+            GetComponent<Animator>().enabled = false;
+        }
         lightvalue = Random.Range(0, 0.9f);
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f-lightvalue);
         rotation *= Random.Range(-1f, 1f);
