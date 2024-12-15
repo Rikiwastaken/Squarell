@@ -1,8 +1,11 @@
+using NUnit.Framework.Internal;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Unity.VisualScripting.Member;
 
 public class ButtonScript : MonoBehaviour
 {
@@ -118,6 +121,15 @@ public class ButtonScript : MonoBehaviour
             SceneManager.LoadScene("InGameScene");
         }
         
+    }
+
+    public void ImportFile()
+    {
+        string pathtofile = EditorUtility.OpenFilePanel("Select .txt Puzzle File.", Application.persistentDataPath + "/SavedLevels/", "txt");
+        string filename = pathtofile.Split('/')[pathtofile.Split('/').Length-1];
+        FileUtil.CopyFileOrDirectory(pathtofile, Application.persistentDataPath + "/SavedLevels/"+filename);
+        SceneManager.LoadScene("LevelSelector");
+
     }
 
 }
