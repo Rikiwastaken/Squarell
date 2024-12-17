@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Replace(transform, ReplaceVelocity);
             }
+            GetComponent<Animator>().SetBool("Moving", false);
         }
         else
         {
@@ -100,6 +101,8 @@ public class PlayerMovement : MonoBehaviour
             
 
             GetComponent<Rigidbody2D>().velocity = movementinput * movementspeed;
+            GetComponent<Animator>().SetBool("Moving", true);
+
 
 
         }

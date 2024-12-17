@@ -27,15 +27,6 @@ public class DoorScript : MonoBehaviour
             
         }
 
-        if(powered)
-        {
-            GetComponent<BoxCollider2D>().enabled = false;
-        }
-        else
-        {
-            GetComponent<BoxCollider2D>().enabled = true;
-        }
-
         if(powered !=laststate)
         {
             ManageAnim();
@@ -53,11 +44,13 @@ public class DoorScript : MonoBehaviour
         {
             animator.SetBool("DoorOpen",true);
             animator.SetBool("DoorClose", false);
+            GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {
             animator.SetBool("DoorOpen", false);
             animator.SetBool("DoorClose", true);
+            GetComponent<BoxCollider2D>().enabled = true;
         }
 
     }

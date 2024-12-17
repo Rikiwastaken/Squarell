@@ -10,6 +10,7 @@ public class buttonmovement : MonoBehaviour
     public Vector2 movementperframe;
     public float maxdistancefromorigin;
     private Vector2 direction;
+    private int movedelay;
 
     // Start is called before the first frame update
     void Start()
@@ -30,19 +31,24 @@ public class buttonmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        GetComponent<RectTransform>().position += new Vector3(direction.x * movementperframe.x, direction.y * movementperframe.y,0);
-        if(Vector2.Distance(GetComponent<RectTransform>().position,bascoord)>maxdistancefromorigin)
+        movedelay++;
+        if(movedelay>=2)
         {
-            if (Mathf.Abs(GetComponent<RectTransform>().position.x - bascoord.x) > Mathf.Abs(GetComponent<RectTransform>().position.y - bascoord.y))
+            movedelay = 0;
+            GetComponent<RectTransform>().position += new Vector3(direction.x * movementperframe.x, direction.y * movementperframe.y, 0);
+            if (Vector2.Distance(GetComponent<RectTransform>().position, bascoord) > maxdistancefromorigin)
             {
-                direction.x= -direction.x;
-            }
-            else
-            {
-                direction.y = -direction.y;
+                if (Mathf.Abs(GetComponent<RectTransform>().position.x - bascoord.x) > Mathf.Abs(GetComponent<RectTransform>().position.y - bascoord.y))
+                {
+                    direction.x = -direction.x;
+                }
+                else
+                {
+                    direction.y = -direction.y;
+                }
             }
         }
+        
 
     }
 }

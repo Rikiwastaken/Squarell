@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leveltoload: 
   levelname: 
+  editorplaymode: 0
 --- !u!4 &1082365136
 Transform:
   m_ObjectHideFlags: 0

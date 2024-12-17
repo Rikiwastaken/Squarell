@@ -26,7 +26,7 @@ public class AlimentationScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(!isalim)
+        if(!isalim && !collision.transform.GetComponent<TriangleHit>() && !collision.transform.GetComponent<PlayerMovement>())
         {
             powered = false;
         }
