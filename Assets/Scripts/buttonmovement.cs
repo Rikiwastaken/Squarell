@@ -25,7 +25,6 @@ public class buttonmovement : MonoBehaviour
         {
             direction.y = -1;
         }
-        Debug.Log(direction);
     }
 
     // Update is called once per frame
