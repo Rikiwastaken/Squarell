@@ -9,20 +9,52 @@ public class IceTileScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.GetComponent<PlayerMovement>()!=null)
+        if (other.GetComponent<PlayerMovement>() != null)
         {
-            other.GetComponent<PlayerMovement>().movedbyice = true;
-            Vector2 velocity = Vector2.zero;
-            if(Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX)>0.1f)
+            if (Vector2.Distance(other.GetComponent<Rigidbody2D>().velocity,Vector2.zero)>1f)
             {
-                velocity.x = other.GetComponent<Rigidbody2D>().velocityX/ Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX);
+                other.GetComponent<PlayerMovement>().movedbyice = true;
+                Vector2 velocity = Vector2.zero;
+                if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX) > 0.1f)
+                {
+                    velocity.x = other.GetComponent<Rigidbody2D>().velocityX / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX);
+                }
+                else if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY) > 0.1f)
+                {
+                    velocity.y = other.GetComponent<Rigidbody2D>().velocityY / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY);
+                }
+                other.GetComponent<Rigidbody2D>().velocity = velocity * slidespeed;
             }
-            else if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY) > 0.1f)
+            else
             {
-                velocity.y = other.GetComponent<Rigidbody2D>().velocityY / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY);
+                other.GetComponent<PlayerMovement>().movedbyice = false;
             }
-            other.GetComponent<Rigidbody2D>().velocity=velocity*slidespeed;
+
         }
+        if (other.GetComponent<MovableCube>() != null)
+        {
+            if (Vector2.Distance(other.GetComponent<Rigidbody2D>().velocity, Vector2.zero) > 1f)
+            {
+                other.GetComponent<MovableCube>().movedbyice = true;
+                Vector2 velocity = Vector2.zero;
+                if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX) > 0.1f)
+                {
+                    velocity.x = other.GetComponent<Rigidbody2D>().velocityX / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX);
+                }
+                else if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY) > 0.1f)
+                {
+                    velocity.y = other.GetComponent<Rigidbody2D>().velocityY / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY);
+                }
+                other.GetComponent<Rigidbody2D>().velocity = velocity * slidespeed;
+            }
+            else
+            {
+                other.GetComponent<MovableCube>().movedbyice = false;
+            }
+
+        }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -32,6 +64,14 @@ public class IceTileScript : MonoBehaviour
             if(!Checkifthereisanothertile(other.GetComponent<Rigidbody2D>().velocity))
             {
                 other.GetComponent<PlayerMovement>().movedbyice = false;
+            }
+        }
+        if (other.GetComponent<MovableCube>() != null)
+        {
+            if (!Checkifthereisanothertile(other.GetComponent<Rigidbody2D>().velocity))
+            {
+                other.GetComponent<MovableCube>().movedbyice = false;
+                other.GetComponent<Rigidbody2D>().velocity=Vector2.zero;
             }
         }
     }

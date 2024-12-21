@@ -6,6 +6,8 @@ using UnityEngine;
 public class MovableCube : MonoBehaviour
 {
 
+    public bool movedbyice;
+
     private GameObject PlayerCube;
 
     private Vector2 distance= Vector2.zero;
@@ -23,7 +25,7 @@ public class MovableCube : MonoBehaviour
             return;
         }
 
-        if(PlayerCube.GetComponent<PullerScript>().target == gameObject )
+        if(PlayerCube.GetComponent<PullerScript>().target == gameObject && !movedbyice && !GetComponent<MovedScript>().moved)
         {
             
             if(distance == Vector2.zero)
@@ -61,7 +63,7 @@ public class MovableCube : MonoBehaviour
             justtargetted= false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
             distance = Vector2.zero;
-            if(!GetComponent<MovedScript>().moved)
+            if(!GetComponent<MovedScript>().moved && !movedbyice)
             {
                 PlayerCube.GetComponent<PlayerMovement>().Replace(transform, PlayerCube.GetComponent<PlayerMovement>().ReplaceVelocity);
             }
