@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float ReplaceVelocity;
 
+    public bool movedbyice;
+
     public GameObject triangleNorth;
     public GameObject triangleSouth;
     public GameObject triangleEast;
@@ -89,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementinput == Vector2.zero)
         {
-            if(!GetComponentInChildren<MovedScript>().moved)
+            if(!GetComponentInChildren<MovedScript>().moved && !movedbyice)
             {
                 Replace(transform, ReplaceVelocity);
             }
@@ -99,8 +101,10 @@ public class PlayerMovement : MonoBehaviour
         {
 
             
-
-            GetComponent<Rigidbody2D>().velocity = movementinput * movementspeed;
+            if(!movedbyice)
+            {
+                GetComponent<Rigidbody2D>().velocity = movementinput * movementspeed;
+            }
             GetComponent<Animator>().SetBool("Moving", true);
 
 
