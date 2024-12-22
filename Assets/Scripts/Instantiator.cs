@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,9 +23,9 @@ public class Instantiator : MonoBehaviour
     public GameObject ConveyerSouth;
     public GameObject ConveyerWest;
     public GameObject ConveyerEast;
-    public GameObject MovableCube;
-    public GameObject HorizontalMovableCube;
-    public GameObject VerticalMovableCube;
+    public GameObject MovableCable;
+    public GameObject HorizontalMovableCable;
+    public GameObject VerticalMovableCable;
     public GameObject Door;
 
     void Start()
@@ -39,6 +40,60 @@ public class Instantiator : MonoBehaviour
 
     }
 
+    void GenerateRoom(string listtoinstantiate)
+    {
+        string[] listalllines = listtoinstantiate.Split('%');
+        GameObject[] prefabList = GameObject.Find("Info").GetComponent<PrefabManager>().prefablist;
+        string[] shortculist = GameObject.Find("Info").GetComponent<PrefabManager>().ShortcutList;
+
+        for (int y = 0; y < listalllines.Length; y++)
+        {
+            string[] listinside = listalllines[y].Split(',');
+            for (int x = 0; x < listinside.Length; x++)
+            {
+
+                Vector2 position = new Vector2(x, -y);
+                int index = getIndex(shortculist,listinside[x]);
+                if (index != -1)
+                {
+                    GameObject newobj = Instantiate(prefabList[index], position, Quaternion.identity);
+                    if (prefabList[index].GetComponent<prefabinfo>().needsfloorunderneath)
+                    {
+                        GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
+                        newfloor.transform.SetParent(GameObject.Find("Floors").transform);
+                    }
+                    if (listinside[x]=="F")
+                    {
+                        newobj.transform.SetParent(GameObject.Find("Floors").transform);
+                    }
+                    if (listinside[x] == "W")
+                    {
+                        newobj.transform.SetParent(GameObject.Find("Walls").transform);
+                    }
+
+                }
+            }
+        }
+    }
+
+    int getIndex(string[] list, string obj)
+    {
+        int index = -1;
+
+        for(int i = 0;i<list.Length;i++)
+        {
+            if(list[i].Equals(obj))
+            {
+                return i;
+            }
+        }
+
+        return index;
+    }
+
+
+    /*
+    old
     void GenerateRoom(string list)
     {
         string[] listalllines=list.Split('%');
@@ -139,28 +194,28 @@ public class Instantiator : MonoBehaviour
 
                 }
 
-                if (listinside[x].Equals("MC")) // Conveyor West 
+                if (listinside[x].Equals("MC")) // MovableCable
                 {
-                    Instantiate(MovableCube, position, Quaternion.identity);
+                    Instantiate(MovableCable, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
 
                 }
-                if (listinside[x].Equals("HMC")) // Conveyor West 
+                if (listinside[x].Equals("HMC")) // horizontalmovablecable
                 {
-                    Instantiate(HorizontalMovableCube, position, Quaternion.identity);
+                    Instantiate(HorizontalMovableCable, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
 
                 }
-                if (listinside[x].Equals("VMC")) // Conveyor West 
+                if (listinside[x].Equals("VMC")) // VerticalMovableCable
                 {
-                    Instantiate(VerticalMovableCube, position, Quaternion.identity);
+                    Instantiate(VerticalMovableCable, position, Quaternion.identity);
                     GameObject newfloor = Instantiate(floor, position, Quaternion.identity);
                     newfloor.transform.SetParent(GameObject.Find("Floors").transform);
 
                 }
-                if (listinside[x].Equals("D")) // Conveyor West 
+                if (listinside[x].Equals("D")) // Door
                 {
                     Instantiate(Door, position, Quaternion.identity);
 
@@ -171,5 +226,7 @@ public class Instantiator : MonoBehaviour
         }
 
     }
+
+    */
 
 }

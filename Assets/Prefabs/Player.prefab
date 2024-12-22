@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 5806576579810695643}
   - component: {fileID: 2570433167242836573}
   - component: {fileID: 8043204037005230509}
+  - component: {fileID: 2970950420586740634}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -325,7 +326,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 314453596479826891, guid: e0de811653b54424f8977377cf0ef81b, type: 3}
+  m_Sprite: {fileID: 3741315899589647915, guid: bf5fff235ff843a469aa4cf68b3ad08d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -400,6 +401,7 @@ MonoBehaviour:
   gripping: 0
   movementspeed: 5
   ReplaceVelocity: 3
+  movedbyice: 0
   triangleNorth: {fileID: 3119797467861249609}
   triangleSouth: {fileID: 7807466271277061912}
   triangleEast: {fileID: 5811355912484088173}
@@ -507,6 +509,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2970950420586740634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358653587078878321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9cfbd435181794cb864fc7b227a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcut: P
+  needsfloorunderneath: 1
+  id: 0
+  deleteduplicates: 0
+  changescale: {x: 0, y: 0, z: 0}
+  mainscript: {fileID: 3961121076823692404}
 --- !u!1 &4444691896117123447
 GameObject:
   m_ObjectHideFlags: 0

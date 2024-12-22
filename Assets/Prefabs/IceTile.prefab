@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2872766774288177610}
   - component: {fileID: 4707067601157673543}
   - component: {fileID: 7563990443887818229}
+  - component: {fileID: 5367158513154682605}
   m_Layer: 0
   m_Name: IceTile
   m_TagString: Untagged
@@ -183,3 +184,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662500a7b81c4f64b8958a81b05921fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5367158513154682605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356347427628855772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9cfbd435181794cb864fc7b227a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcut: Ice
+  needsfloorunderneath: 0
+  id: 0
+  deleteduplicates: 0
+  changescale: {x: 0, y: 0, z: 0}
+  mainscript: {fileID: 5367158513154682605}

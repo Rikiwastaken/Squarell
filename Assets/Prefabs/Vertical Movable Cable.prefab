@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300354105122878578}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.175, y: 0.175, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4372751854292042163}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5258868149859922865
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 4747661142123666369}
   - component: {fileID: 6780874696122520685}
   - component: {fileID: 3068272970170154881}
+  - component: {fileID: -5255304296199594322}
   m_Layer: 0
   m_Name: Vertical Movable Cable
   m_TagString: Untagged
@@ -350,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7615e80adf76648ad6fc6f1334c746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movedbyice: 0
   orientation: 2
 --- !u!114 &3068272970170154881
 MonoBehaviour:
@@ -364,6 +366,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moved: 0
+--- !u!114 &-5255304296199594322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238830793604638306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9cfbd435181794cb864fc7b227a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcut: VMC
+  needsfloorunderneath: 1
+  id: 14
+  deleteduplicates: 0
+  changescale: {x: 0, y: 0, z: 0}
+  mainscript: {fileID: 6780874696122520685}
 --- !u!1001 &6613405259976714560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -410,6 +430,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4372751854292042163, guid: a82a65e88ba419048b316d566899268c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779205033710977904, guid: a82a65e88ba419048b316d566899268c, type: 3}
+      propertyPath: id
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238830793604638306, guid: a82a65e88ba419048b316d566899268c, type: 3}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 52955427790759059}
   - component: {fileID: 7703417613017170132}
   - component: {fileID: 499276007464186042}
+  - component: {fileID: -1722314971093411478}
   m_Layer: 0
   m_Name: Conveyor South
   m_TagString: conveyor
@@ -174,6 +175,24 @@ MonoBehaviour:
   forceStrength: 2
   ForceVector: {x: 0, y: 0}
   powered: 0
+--- !u!114 &-1722314971093411478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238830793604638306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9cfbd435181794cb864fc7b227a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcut: CS
+  needsfloorunderneath: 0
+  id: 0
+  deleteduplicates: 0
+  changescale: {x: 1, y: -1, z: 1}
+  mainscript: {fileID: 499276007464186042}
 --- !u!1001 &5441081760622169875
 PrefabInstance:
   m_ObjectHideFlags: 0

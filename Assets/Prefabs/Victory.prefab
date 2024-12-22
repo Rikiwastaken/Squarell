@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9181263628443786751}
   - component: {fileID: -1134074855217237124}
   - component: {fileID: 9020061830993163354}
+  - component: {fileID: -5591410669495672201}
   m_Layer: 0
   m_Name: Victory
   m_TagString: Untagged
@@ -183,3 +184,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5591410669495672201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238830793604638306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9cfbd435181794cb864fc7b227a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcut: Vic
+  needsfloorunderneath: 1
+  id: 1
+  deleteduplicates: 1
+  changescale: {x: 0, y: 0, z: 0}
+  mainscript: {fileID: -1134074855217237124}

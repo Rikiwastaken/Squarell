@@ -57,6 +57,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objectlist = GameObject.Find("Info").GetComponent<PrefabManager>().prefablist;
         cam = GameObject.Find("Main Camera");
         ObjectsPlaced = GameObject.Find("ObjectsPlaced").transform;
         InitializeInputs();
@@ -217,81 +218,9 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
                 Vector2 position = new Vector2(x, -y);
 
-                if (listinside[x].Equals("W")) //mur
-                {
-                    PlaceObject(5, false,position);
-                }
-                if (listinside[x].Equals("P")) //joueur
-                {
-                    PlaceObject(0, false, position);
-                }
-                if (listinside[x].Equals("M")) //objet qui bouge dans toutes les direction
-                {
-                    PlaceObject(2, false, position);
-                }
-                if (listinside[x].Equals("H")) //objet qui bouge que selon x
-                {
-                    PlaceObject(3, false, position);
-                }
-                if (listinside[x].Equals("V")) //objet qui bouge que selon y
-                {
-                    PlaceObject(4, false, position);
-                }
-                if (listinside[x].Equals("F")) //sol
-                {
-                    PlaceObject(7, false, position);
-                }
-                if (listinside[x].Equals("Vic")) // victory 
-                {
-                    PlaceObject(1, false, position);
-
-                }
-                if (listinside[x].Equals("S")) // cube that objects can be pulled through
-                {
-                    PlaceObject(6, false, position);
-                }
-                if (listinside[x].Equals("C")) // Cable
-                {
-                    PlaceObject(9, false, position);
-                }
-                if (listinside[x].Equals("A")) // Alimentation
-                {
-                    PlaceObject(8, false, position);
-                }
-                if (listinside[x].Equals("PP")) // PresurePlate
-                {
-                    PlaceObject(19, false, position);
-                }
-                if (listinside[x].Equals("FC")) // Floor Cable 
-                {
-                    PlaceObject(14, false, position);
-
-                }
-                if (listinside[x].Equals("CN")) // Conveyor North 
-                {
-                    PlaceObject(12, false, position);
-
-                }
-                if (listinside[x].Equals("CS")) // Conveyor South 
-                {
-                    PlaceObject(13, false, position);
-
-                }
-                if (listinside[x].Equals("CE")) // Conveyor East 
-                {
-                    PlaceObject(10, false, position);
-
-                }
-                if (listinside[x].Equals("MC")) // Movable Cable
-                {
-                    PlaceObject(15, false, position);
-
-                }
-                if (listinside[x].Equals("D")) // Door
-                {
-                    PlaceObject(18, false, position);
-
-                }
+                int index = getIndex(GameObject.Find("Info").GetComponent<PrefabManager>().ShortcutList, listinside[x]);
+                PlaceObject(index, false, position);
+               
 
             }
         }
@@ -453,6 +382,19 @@ public class PlayerCursorEditorScript : MonoBehaviour
             }
 
             GameObject newObject = Instantiate(objectlist[Indice], positiontoplace, Quaternion.identity);
+            prefabinfo info = newObject.GetComponent<prefabinfo>();
+            if(info.mainscript != null)
+            {
+                info.mainscript.enabled = false;
+            }
+            if(info.deleteduplicates)
+            {
+                DeleteDuplicates(objectlist[Indice], positiontoplace);
+            }
+            if(info.changescale!=Vector3.zero)
+            {
+                newObject.transform.localScale = info.changescale;
+            }
             if (newObject.GetComponent<MovableCube>() != null)
             {
                 newObject.GetComponent<MovableCube>().enabled = false;
@@ -472,11 +414,12 @@ public class PlayerCursorEditorScript : MonoBehaviour
             }
             if(newObject.GetComponent<VictoryScript>()!=null)
             {
-                newObject.GetComponent<VictoryScript>().enabled = false;
                 DeleteDuplicates(objectlist[Indice], positiontoplace);
+                newObject.GetComponent<VictoryScript>().enabled = false;
             }
             if (newObject.GetComponent<AlimentationScript>() != null)
             {
+                DeleteDuplicates(objectlist[Indice], positiontoplace);
                 newObject.GetComponent<AlimentationScript>().enabled = false;
             }
             if (newObject.GetComponent<Cable>() != null)
@@ -552,7 +495,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
             {
                 Vector2 newpos = acttransform.transform.position;
                 Destroy(acttransform.gameObject); //on détruit la transform qui se trouve là où on veut mettre un objet
-                GameObject newfloor =Instantiate(objectlist[7], newpos, Quaternion.identity);
+                GameObject newfloor =Instantiate(objectlist[getIndex(GameObject.Find("Info").GetComponent<PrefabManager>().ShortcutList,"F")], newpos, Quaternion.identity);
                 newfloor.transform.SetParent(ObjectsPlaced);
             }
         }
@@ -657,89 +600,25 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     string GetCorrespondingChar(Transform target)
     {
-        string name = target.name;
-
-        string res = "F";
-        if(name.Contains("Horizontal Movable Cable"))
-        {
-            res = "HMC";
-        }
-        else if(name.Contains("Vertical Movable Cable"))
-        {
-            res = "VMC";
-        }
-        else if (name.Contains("Movable Cable"))
-        {
-            res = "MC";
-        }
-        else if (name.Contains("Horizontal"))
-        {
-            res = "H";
-        }
-        else if (name.Contains("Vertical"))
-        {
-            res = "V";
-        }
-        else if (name.Contains("Movable"))
-        {
-            res = "M";
-        }
-        else if (name.Contains("Player"))
-        {
-            res = "P";
-        }
-        else if (name.Contains("Wall"))
-        {
-            res = "W";
-        }
-        else if (name.Contains("Victory"))
-        {
-            res = "Vic";
-        }
-        else if (name.Contains("See"))
-        {
-            res = "S";
-        }
-        else if (name.Contains("FloorCable"))
-        {
-            res = "FC";
-        }
-        else if (name.Contains("Cable"))
-        {
-            res = "C";
-        }
-        else if (name.Contains("Alimentation"))
-        {
-            res = "A";
-        }
-        else if (name.Contains("PressurePlate"))
-        {
-            res = "PP";
-        }
-        else if (name.Contains("Conveyor East"))
-        {
-            res = "CE";
-        }
-        else if (name.Contains("Conveyor West"))
-        {
-            res = "CW";
-        }
-        else if (name.Contains("Conveyor North"))
-        {
-            res = "CN";
-        }
-        else if (name.Contains("Conveyor South"))
-        {
-            res = "CS";
-        }
-        else if (name.Contains("Door"))
-        {
-            res = "D";
-        }
-
+        string res = target.GetComponent<prefabinfo>().shortcut;
 
         return res;
 
+    }
+
+    int getIndex(string[] list, string obj)
+    {
+        int index = -1;
+
+        for (int i = 0; i < list.Length; i++)
+        {
+            if (list[i].Equals(obj))
+            {
+                return i;
+            }
+        }
+
+        return index;
     }
 
 }

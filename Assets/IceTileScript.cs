@@ -79,7 +79,6 @@ public class IceTileScript : MonoBehaviour
 
     bool Checkifthereisanothertile(Vector2 direction)
     {
-        Debug.Log(direction);
         bool tilepresent=false;
 
         Vector2 pos = transform.position;

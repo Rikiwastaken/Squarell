@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4372751854292042163}
   - component: {fileID: 669594117105488560}
   - component: {fileID: 5938959898484404854}
+  - component: {fileID: 6889923649020477875}
   m_Layer: 0
   m_Name: FloorCube
   m_TagString: Untagged
@@ -99,3 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae6e3d1c4d76fa4f979daf58bafe9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seethrough: 0
+--- !u!114 &6889923649020477875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238830793604638306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9cfbd435181794cb864fc7b227a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcut: F
+  needsfloorunderneath: 0

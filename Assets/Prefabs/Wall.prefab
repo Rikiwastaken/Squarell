@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 52955427790759059}
   - component: {fileID: 1711216484405746362}
   - component: {fileID: 4747661142123666369}
+  - component: {fileID: 1098924476243567411}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -175,3 +176,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1098924476243567411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238830793604638306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9cfbd435181794cb864fc7b227a265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcut: W
+  needsfloorunderneath: 0
