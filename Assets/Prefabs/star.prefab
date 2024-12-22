@@ -125,6 +125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mvtspeed: {x: 0.3, y: -0.3}
   rotation: 0.5
+  Animationtoshow: {fileID: 0}
+  SpriteToShow: {fileID: 0}
+  shootingstarmax: 5
 --- !u!50 &1001783412995708025
 Rigidbody2D:
   serializedVersion: 4

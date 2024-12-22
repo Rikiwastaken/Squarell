@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor.Animations;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Star : MonoBehaviour
@@ -14,6 +15,11 @@ public class Star : MonoBehaviour
 
     public AnimatorController Animationtoshow;
     public Sprite SpriteToShow;
+
+    private int chancetobecomeashootingstar;
+    public int shootingstarmax;
+    public float xtowarp;
+    public float ytowarp;
 
     // Update is called once per frame
 
@@ -35,24 +41,52 @@ public class Star : MonoBehaviour
     }
     void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().velocity = mvtspeed;
-        GetComponent<Rigidbody2D>().transform.rotation = Quaternion.Euler(GetComponent<Rigidbody2D>().transform.rotation.eulerAngles + new Vector3(0f,0f,rotation));
-        if(transform.position.x>20)
+        Vector2 posparent = transform.parent.position;
+
+
+        if(transform.position.x-posparent.x>xtowarp)
         {
-            transform.position = new Vector2(-20, transform.position.y);
+            transform.position = new Vector2(-xtowarp + posparent.x, transform.position.y);
+            becomeshootingstar(true);
         }
-        if (transform.position.x < -20)
+        else if (transform.position.x - posparent.x < -xtowarp)
         {
-            transform.position = new Vector2(20, transform.position.y);
+            transform.position = new Vector2(xtowarp + posparent.x, transform.position.y);
+            becomeshootingstar(true);
         }
-        if (transform.position.y > 12)
+        else if (transform.position.y - posparent.y > ytowarp)
         {
-            transform.position = new Vector2(transform.position.x, -12);
+            transform.position = new Vector2(transform.position.x, -ytowarp + posparent.y);
+            becomeshootingstar(true);
         }
-        if (transform.position.y < -12)
+        else if (transform.position.y - posparent.y < -ytowarp)
         {
-            transform.position = new Vector2(transform.position.x, 12);
+            transform.position = new Vector2(transform.position.x, ytowarp + posparent.y);
+            becomeshootingstar(true);
+        }
+        else
+        {
+            becomeshootingstar(false);
         }
         
+    }
+
+    void becomeshootingstar(bool move)
+    {
+        if(move)
+        {
+            chancetobecomeashootingstar = (int)Random.Range(0, shootingstarmax);
+        }
+        
+        if(chancetobecomeashootingstar==shootingstarmax-3)
+        {
+            GetComponent<Rigidbody2D>().velocity = mvtspeed*10;
+            GetComponent<Rigidbody2D>().transform.rotation = Quaternion.Euler(GetComponent<Rigidbody2D>().transform.rotation.eulerAngles + new Vector3(0f, 0f, rotation*35));
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity = mvtspeed;
+            GetComponent<Rigidbody2D>().transform.rotation = Quaternion.Euler(GetComponent<Rigidbody2D>().transform.rotation.eulerAngles + new Vector3(0f, 0f, rotation));
+        }
     }
 }

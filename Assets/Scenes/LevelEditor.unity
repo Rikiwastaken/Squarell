@@ -5393,7 +5393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6809116380638969671, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
       propertyPath: nbrang
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6809116380638969671, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
       propertyPath: rotation
@@ -5401,12 +5401,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6809116380638969671, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
       propertyPath: starparrang
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6809116380638969671, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
       propertyPath: SpriteToShow
       value: 
       objectReference: {fileID: 21300000, guid: 276d550afbc8bb241ad49894069c8bc0, type: 3}
+    - target: {fileID: 6809116380638969671, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
+      propertyPath: screensize.x
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809116380638969671, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
+      propertyPath: screensize.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809116380638969671, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
+      propertyPath: shootingstarmax
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8332950088850222420, guid: 64df2a97d23d4fa42a5381be8afd47ad, type: 3}
       propertyPath: m_Name
       value: Background
