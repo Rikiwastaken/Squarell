@@ -47,7 +47,7 @@ public class AlimentationScript : MonoBehaviour
         }
         else
         {
-            ManageCables();
+            //ManageCables();
         }
         
     }

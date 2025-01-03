@@ -251,6 +251,6 @@ MonoBehaviour:
   shortcut: PP
   needsfloorunderneath: 0
   id: 8
-  deleteduplicates: 1
+  deleteduplicates: 0
   changescale: {x: 0, y: 0, z: 0}
   mainscript: {fileID: 2896901088590455171}

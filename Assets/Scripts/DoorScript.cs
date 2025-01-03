@@ -20,10 +20,7 @@ public class DoorScript : MonoBehaviour
 
         if (Cable != null)
         {
-            if(Cable.Alimentation!=null)
-            {
-                powered = Cable.Alimentation.GetComponent<AlimentationScript>().powered;
-            }
+            powered = Cable.powered;
             
         }
 

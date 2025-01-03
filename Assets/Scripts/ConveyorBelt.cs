@@ -95,14 +95,8 @@ public class ConveyorBelt : MonoBehaviour
     {
         transform.position = new Vector2((int)Mathf.Round(transform.position.x), (int)Mathf.Round(transform.position.y));
 
-        if(GetComponentInChildren<Cable>().Alimentation!=null)
-        {
-            powered = GetComponentInChildren<Cable>().Alimentation.GetComponent<AlimentationScript>().powered;
-        }
-        else
-        {
-            powered = false;
-        }
+
+        powered = GetComponentInChildren<Cable>().powered;
 
         if(powered)
         {
