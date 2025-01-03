@@ -276,6 +276,10 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 {
                     newObject.GetComponent<AlimentationScript>().enabled = false;
                 }
+                if (newObject.GetComponent<DoorScript>() != null)
+                {
+                    newObject.GetComponent<DoorScript>().enabled = false;
+                }
                 if (newObject.GetComponent<ConveyorBelt>() != null)
                 {
                     if (newObject.GetComponent<ConveyorBelt>().direction == 1)
