@@ -9,6 +9,7 @@
 - Pressure Plate: Power supply that is activated only when a block is on it. Also works with Alphonse.
 - Doors: Acts as a wall unless powered.
 - Conveyor Belt: If powered, pushes player and movable blocks. Available in all directions.
+- Magnet Tile: Attracts or repels movable metallic objects when powered.
 
 ### Obstacles
 - Wall: Can't walk through or pull objects on the other side.
@@ -29,7 +30,6 @@
 - Tile that creates a delay in electrical currents.
 - Merger Tile: Combines two electrical currents into one, but only works if both inputs are active.
 - Toggle Tile: Changes state (on/off) each time it receives power, enabling complex timing-based puzzles.
-- Magnet Tile: Attracts or repels movable metallic objects when powered.
 - Water Tile: Blocks movement unless an object is pushed into it to create a bridge.
 - Box creator or destructor
 - Lava Tile: Destroys any movable object or Alphonse that touches it unless covered by a bridge object.
