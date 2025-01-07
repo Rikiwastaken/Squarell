@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 Destination = new Vector2((int)Mathf.Round(tomove.position.x), (int)Mathf.Round(tomove.position.y));
 
-        if(Vector2.Distance(tomove.position, Destination)>0.01f)
+        if(Vector2.Distance(tomove.position, Destination)>0.0001f)
         {
             tomove.GetComponent<Rigidbody2D>().velocity = (Destination - (Vector2)tomove.position) * speed;
         }

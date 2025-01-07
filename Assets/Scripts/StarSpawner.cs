@@ -54,11 +54,11 @@ public class StarSpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameObject.Find("Main Camera"))
-        {
-            transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y, transform.position.z);
-            starholder.transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y, starholder.transform.position.z);
-        }
+        //if (GameObject.Find("Main Camera"))
+        //{
+        //    transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y, transform.position.z);
+        //    starholder.transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y, starholder.transform.position.z);
+        //}
     }
 
 }

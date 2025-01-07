@@ -16,11 +16,24 @@ public class MovedScript : MonoBehaviour
             }
             
         }
+        if (collision.transform.GetComponent<MagnetScript>() != null && !GetComponentInParent<PlayerMovement>())
+        {
+            if (collision.transform.GetComponent<MagnetScript>().powered)
+            {
+                moved = true;
+            }
+
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.transform.GetComponent<ConveyorBelt>() != null)
+        {
+            moved = false;
+        }
+        if (collision.transform.GetComponent<MagnetScript>() != null && !GetComponentInParent<PlayerMovement>())
         {
             moved = false;
         }
@@ -35,11 +48,23 @@ public class MovedScript : MonoBehaviour
                 moved = true;
             }
         }
+        if (collision.transform.GetComponent<MagnetScript>() != null)
+        {
+            if (collision.transform.GetComponent<MagnetScript>().powered && !GetComponentInParent<PlayerMovement>())
+            {
+                moved = true;
+            }
+
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.GetComponent<ConveyorBelt>() != null)
+        {
+            moved = false;
+        }
+        if (collision.transform.GetComponent<MagnetScript>() != null && !GetComponentInParent<PlayerMovement>())
         {
             moved = false;
         }
