@@ -13,6 +13,7 @@ public class MagnetScript : MonoBehaviour
     private void Start()
     {
         Cable = GetComponentInChildren<Cable>();
+        laststate = !powered;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,24 +24,65 @@ public class MagnetScript : MonoBehaviour
     {
         if (other.GetComponent<MovedScript>() != null && powered && !GetComponent<PlayerMovement>() && other.GetComponent<Rigidbody2D>())
         {
-            Debug.Log(Vector2.Distance(transform.position, other.transform.position));
-            Vector2 pullvector = CalculatePullVector(other.transform);
-            if(Mathf.Abs(other.transform.position.x - pullvector.x)<=0.01f)
+            if(Vector2.Distance(transform.position, other.transform.position) >= 1.3f)
             {
-                pullvector.x *=-1;
+                other.GetComponent<Rigidbody2D>().isKinematic = false;
+                Debug.Log(Vector2.Distance(transform.position, other.transform.position));
+                Vector2 pullvector = CalculatePullVector(other.transform);
+                if (Mathf.Abs(other.transform.position.x - pullvector.x) <= 0.01f)
+                {
+                    pullvector.x *= -1;
+                }
+                if (Mathf.Abs(other.transform.position.y - pullvector.y) <= 0.01f)
+                {
+                    pullvector.y *= -1;
+                }
+                if (Vector2.Distance(transform.position, other.transform.position) > 1.1f)
+                {
+                    other.GetComponent<Rigidbody2D>().velocity += pullvector * Time.deltaTime;
+                }
+                if (Vector2.Distance(transform.position, other.transform.position) <= 1f && (Mathf.Abs(transform.position.x - other.transform.position.x) <= 0.01f || Mathf.Abs(transform.position.y - other.transform.position.y) <= 0.01f))
+                {
+                    other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                }
             }
-            if (Mathf.Abs(other.transform.position.y - pullvector.y) <= 0.01f)
+            else
             {
-                pullvector.y *= -1;
+                other.GetComponent<Rigidbody2D>().isKinematic = true;
+                if (Vector2.SqrMagnitude(other.GetComponent<Rigidbody2D>().velocity)>=1.0f)
+                {
+                    other.GetComponent<Rigidbody2D>().velocity=Vector2.zero;
+                    Vector2 newposition = new Vector2((int)Mathf.Round(other.transform.position.x), (int)Mathf.Round(other.transform.position.y));
+                    //sert a annuler le replacement en diagonale
+                    if(Mathf.Abs(Mathf.Round(newposition.x))!= Mathf.Abs(Mathf.Round(transform.position.x)) && Mathf.Abs(Mathf.Round(newposition.y)) != Mathf.Abs(Mathf.Round(transform.position.y)))
+                    {
+                        if (Mathf.Abs(Mathf.Round(newposition.x)) - Mathf.Abs(Mathf.Round(transform.position.x)) < Mathf.Abs(Mathf.Round(newposition.y)) - Mathf.Abs(Mathf.Round(transform.position.y)))
+                        {
+                            if (newposition.x < transform.position.x)
+                            {
+                                newposition.x += 1;
+                            }
+                            else
+                            {
+                                newposition.x -= 1;
+                            }
+                        }
+                        else
+                        {
+                            if (newposition.y < transform.position.y)
+                            {
+                                newposition.y += 1;
+                            }
+                            else
+                            {
+                                newposition.y -= 1;
+                            }
+                        }
+                    }
+                    other.GetComponent<Rigidbody2D>().MovePosition(newposition);
+                }
             }
-            if ( Vector2.Distance(transform.position, other.transform.position)>1.1f)
-            {
-                other.GetComponent<Rigidbody2D>().velocity += pullvector*Time.deltaTime;
-            }
-            if (Vector2.Distance(transform.position, other.transform.position)<=1f && (Mathf.Abs(transform.position.x - other.transform.position.x)<=0.01f || Mathf.Abs(transform.position.y - other.transform.position.y) <= 0.01f))
-            {
-                other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            }
+            
 
         }
         
@@ -49,8 +91,9 @@ public class MagnetScript : MonoBehaviour
     {
         if (other.GetComponent<MovedScript>() != null && powered && !other.GetComponentInParent<PlayerMovement>() && !other.GetComponent<PlayerMovement>() && other.GetComponent<Rigidbody2D>())
         {
-            other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            
+            other.GetComponent<Rigidbody2D>().isKinematic = true;
+            other.GetComponent<Rigidbody2D>().velocity = Vector2.zero; 
+
         }
     }
 

@@ -37,7 +37,6 @@ public class PullerScript : MonoBehaviour
                         if (Vector2.Distance(go.transform.position, transform.position) < Vector2.Distance(target.transform.position, transform.position))
                         {
                             target = go;
-                            
                         }
                     }
                     else
