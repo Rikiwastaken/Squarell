@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceTileScript : MonoBehaviour
+public class OneWayBlockScript : MonoBehaviour
 {
 
     public float slidespeed;
+
+    public Vector2 direction;
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -14,16 +16,7 @@ public class IceTileScript : MonoBehaviour
             if (Vector2.Distance(other.GetComponent<Rigidbody2D>().velocity,Vector2.zero)>1f)
             {
                 other.GetComponent<PlayerMovement>().movedbyice = true;
-                Vector2 velocity = Vector2.zero;
-                if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX) > 0.1f)
-                {
-                    velocity.x = other.GetComponent<Rigidbody2D>().velocityX / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX);
-                }
-                else if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY) > 0.1f)
-                {
-                    velocity.y = other.GetComponent<Rigidbody2D>().velocityY / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY);
-                }
-                other.GetComponent<Rigidbody2D>().velocity = velocity * slidespeed;
+                other.GetComponent<Rigidbody2D>().velocity = direction * slidespeed;
             }
             else
             {
@@ -36,16 +29,7 @@ public class IceTileScript : MonoBehaviour
             if (Vector2.Distance(other.GetComponent<Rigidbody2D>().velocity, Vector2.zero) > 1f)
             {
                 other.GetComponent<MovableCube>().movedbyice = true;
-                Vector2 velocity = Vector2.zero;
-                if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX) > 0.1f)
-                {
-                    velocity.x = other.GetComponent<Rigidbody2D>().velocityX / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityX);
-                }
-                else if (Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY) > 0.1f)
-                {
-                    velocity.y = other.GetComponent<Rigidbody2D>().velocityY / Mathf.Abs(other.GetComponent<Rigidbody2D>().velocityY);
-                }
-                other.GetComponent<Rigidbody2D>().velocity = velocity * slidespeed;
+                other.GetComponent<Rigidbody2D>().velocity = direction * slidespeed;
             }
             else
             {
@@ -82,17 +66,18 @@ public class IceTileScript : MonoBehaviour
         bool tilepresent=false;
 
         Vector2 pos = transform.position;
+
         OneWayBlockScript[] allOWtiles = FindObjectsByType<OneWayBlockScript>(FindObjectsSortMode.None);
-        foreach (OneWayBlockScript IceTile in allOWtiles)
+        foreach(OneWayBlockScript OWTile in allOWtiles)
         {
-            Vector2 tilepos = IceTile.transform.position;
+            Vector2 tilepos = OWTile.transform.position;
             float diffx = tilepos.x - pos.x;
             float diffy = tilepos.y - pos.y;
-            if (direction.x > 0 && diffx > 0.95f && diffx < 1.05f && Mathf.Abs(diffy) < 0.1f)
+            if(direction.x>0 && diffx>0.95f && diffx<1.05f && Mathf.Abs(diffy)<0.1f)
             {
                 tilepresent = true;
             }
-            else if (direction.x < 0 && diffx < -0.95f && diffx > -1.05f && Mathf.Abs(diffy) < 0.1f)
+            else if(direction.x < 0 && diffx < -0.95f && diffx > -1.05f && Mathf.Abs(diffy) < 0.1f)
             {
                 tilepresent = true;
             }
@@ -106,16 +91,16 @@ public class IceTileScript : MonoBehaviour
             }
         }
         IceTileScript[] allicetiles = FindObjectsByType<IceTileScript>(FindObjectsSortMode.None);
-        foreach(IceTileScript IceTile in allicetiles)
+        foreach (IceTileScript IceTile in allicetiles)
         {
             Vector2 tilepos = IceTile.transform.position;
             float diffx = tilepos.x - pos.x;
             float diffy = tilepos.y - pos.y;
-            if(direction.x>0 && diffx>0.95f && diffx<1.05f && Mathf.Abs(diffy)<0.1f)
+            if (direction.x > 0 && diffx > 0.95f && diffx < 1.05f && Mathf.Abs(diffy) < 0.1f)
             {
                 tilepresent = true;
             }
-            else if(direction.x < 0 && diffx < -0.95f && diffx > -1.05f && Mathf.Abs(diffy) < 0.1f)
+            else if (direction.x < 0 && diffx < -0.95f && diffx > -1.05f && Mathf.Abs(diffy) < 0.1f)
             {
                 tilepresent = true;
             }
