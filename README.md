@@ -33,7 +33,7 @@
 - Water Tile: Blocks movement unless an object is pushed into it to create a bridge.
 - Box creator or destructor
 - Lava Tile: Destroys any movable object or Alphonse that touches it unless covered by a bridge object.
-- Mirror Tile: Reflects electrical currents or laser beams in a new direction.
+- Mirror Tile: laser beams in a new direction.
 - Key and Lock: Alphonse must push a key onto a lock to unlock a specific door or trigger an event.
 - Spring Tile: Launches Alphonse or objects several tiles in a specified direction when stepped on or activated.
 - One-Way Gate: Allows movement or pushing of objects in one direction but blocks movement in the opposite direction.

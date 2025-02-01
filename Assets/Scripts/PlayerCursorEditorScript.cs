@@ -54,19 +54,22 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
     public Transform ShortcutsTransform;
 
+    private GameObject Info;
+
     // Start is called before the first frame update
     void Start()
     {
-        objectlist = GameObject.Find("Info").GetComponent<PrefabManager>().prefablist;
+        Info = GameObject.Find("Info");
+        objectlist = Info.GetComponent<PrefabManager>().prefablist;
         cam = GameObject.Find("Main Camera");
         ObjectsPlaced = GameObject.Find("ObjectsPlaced").transform;
         InitializeInputs();
 
 
-        if(GameObject.Find("Info").GetComponent<Info>().leveltoload != "")
+        if(Info.GetComponent<Info>().leveltoload != "")
         {
-            GameObject.Find("NameSelector").GetComponent<TMP_InputField>().text = GameObject.Find("Info").GetComponent<Info>().levelname;
-            GenerateRoomInEditor(GameObject.Find("Info").GetComponent<Info>().leveltoload);
+            GameObject.Find("NameSelector").GetComponent<TMP_InputField>().text = Info.GetComponent<Info>().levelname;
+            GenerateRoomInEditor(Info.GetComponent<Info>().leveltoload);
 
         }
         
@@ -218,7 +221,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
 
                 Vector2 position = new Vector2(x, -y);
 
-                int index = getIndex(GameObject.Find("Info").GetComponent<PrefabManager>().ShortcutList, listinside[x]);
+                int index = getIndex(Info.GetComponent<PrefabManager>().ShortcutList, listinside[x]);
                 PlaceObject(index, false, position);
                
 
@@ -381,7 +384,7 @@ public class PlayerCursorEditorScript : MonoBehaviour
                 Transform acttransform = ObjectsPlaced.GetChild(i);
                 if (Mathf.Round(acttransform.position.x) == positiontoplace.x && Mathf.Round(acttransform.position.y) == positiontoplace.y)
                 {
-                    Destroy(acttransform.gameObject); //on détruit la transform qui se trouve là où on veut mettre un objet
+                    Destroy(acttransform.gameObject); //on dï¿½truit la transform qui se trouve lï¿½ oï¿½ on veut mettre un objet
                 }
             }
 
@@ -498,8 +501,8 @@ public class PlayerCursorEditorScript : MonoBehaviour
             if ((Mathf.Round(acttransform.position.x) != coordinates.x || Mathf.Round(acttransform.position.y) != coordinates.y) && acttransform.name.Contains(type.transform.name))
             {
                 Vector2 newpos = acttransform.transform.position;
-                Destroy(acttransform.gameObject); //on détruit la transform qui se trouve là où on veut mettre un objet
-                GameObject newfloor =Instantiate(objectlist[getIndex(GameObject.Find("Info").GetComponent<PrefabManager>().ShortcutList,"F")], newpos, Quaternion.identity);
+                Destroy(acttransform.gameObject); //on dï¿½truit la transform qui se trouve lï¿½ oï¿½ on veut mettre un objet
+                GameObject newfloor =Instantiate(objectlist[getIndex(Info.GetComponent<PrefabManager>().ShortcutList,"F")], newpos, Quaternion.identity);
                 newfloor.transform.SetParent(ObjectsPlaced);
             }
         }

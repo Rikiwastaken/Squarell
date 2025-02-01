@@ -48,6 +48,7 @@ MonoBehaviour:
   leveltoload: 
   levelname: 
   editorplaymode: 0
+  HeldKeys: 0
 --- !u!114 &1144984403956059879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,4 +83,6 @@ MonoBehaviour:
   - {fileID: 7238830793604638306, guid: 3fd1eba72ff8604408843c16f0f1b7da, type: 3}
   - {fileID: 7238830793604638306, guid: 7a9f270172d17844a8f3c0b9abffb172, type: 3}
   - {fileID: 3356347427628855772, guid: d6a1b4a2e6da3fe44bc7abcb6929d507, type: 3}
+  - {fileID: 7238830793604638306, guid: 2f321c50c268c4644a03194248dc693c, type: 3}
+  - {fileID: 266310233926505260, guid: 2a1ac6116749d6c47b95ec585305ef30, type: 3}
   ShortcutList: []

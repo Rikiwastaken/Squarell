@@ -14,6 +14,13 @@ public class ButtonScript : MonoBehaviour
 
     public GameObject LevelDetailsPanel;
 
+    private Info info;
+
+    public void Start()
+    {
+        info = GameObject.Find("Info").GetComponent<Info>();
+    }
+
     public void DestroyParent()
     {
         if(transform.parent != null)
@@ -46,9 +53,9 @@ public class ButtonScript : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        GameObject.Find("Info").GetComponent<Info>().levelname = "";
-        GameObject.Find("Info").GetComponent<Info>().leveltoload = "";
-        GameObject.Find("Info").GetComponent<Info>().editorplaymode = false;
+        info.levelname = "";
+        info.leveltoload = "";
+        info.editorplaymode = false;
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1.0f;
     }
@@ -71,8 +78,8 @@ public class ButtonScript : MonoBehaviour
 
     public void selectlevel()
     {
-        GameObject.Find("Info").GetComponent<Info>().levelname = levelname;
-        GameObject.Find("Info").GetComponent<Info>().leveltoload = System.IO.File.ReadAllText(Application.persistentDataPath + "/SavedLevels/"+levelname);
+        info.levelname = levelname;
+        info.leveltoload = System.IO.File.ReadAllText(Application.persistentDataPath + "/SavedLevels/"+levelname);
         transform.parent.parent.gameObject.SetActive(false);
         LevelDetailsPanel.SetActive(true);
         LevelDetailsPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = levelname;
@@ -85,21 +92,21 @@ public class ButtonScript : MonoBehaviour
 
     public void DeleteLevel()
     {
-        System.IO.File.Delete(Application.persistentDataPath + "/SavedLevels/"+GameObject.Find("Info").GetComponent<Info>().levelname);
+        System.IO.File.Delete(Application.persistentDataPath + "/SavedLevels/"+info.levelname);
         LoadMainMenu();
     }
 
     public void LoadMainMenuFromPlayMode()
     {
-        if(GameObject.Find("Info").GetComponent<Info>().editorplaymode)
+        if(info.editorplaymode)
         {
             SceneManager.LoadScene("LevelEditor");
         }
         else
         {
-            GameObject.Find("Info").GetComponent<Info>().levelname = "";
-            GameObject.Find("Info").GetComponent<Info>().leveltoload = "";
-            GameObject.Find("Info").GetComponent<Info>().editorplaymode = false;
+            info.levelname = "";
+            info.leveltoload = "";
+            info.editorplaymode = false;
             SceneManager.LoadScene("MainMenu");
         }
         Time.timeScale = 1.0f;
@@ -115,9 +122,9 @@ public class ButtonScript : MonoBehaviour
     {
         if(GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().SaveLevel())
         {
-            GameObject.Find("Info").GetComponent<Info>().leveltoload = GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().GenerateSaveString();
-            GameObject.Find("Info").GetComponent<Info>().levelname = GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().scenename;
-            GameObject.Find("Info").GetComponent<Info>().editorplaymode = true;
+            info.leveltoload = GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().GenerateSaveString();
+            info.levelname = GameObject.Find("PlayerCursor").GetComponent<PlayerCursorEditorScript>().scenename;
+            info.editorplaymode = true;
             SceneManager.LoadScene("InGameScene");
         }
         
