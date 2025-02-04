@@ -16,6 +16,7 @@
 - Seethrough: Can't walk through but can pull objects on the other side.
 - Floor: Can walk on it.
 - Ice Tiles: If you push an object in a direction or walk in a direction, you'll keep going in that direction until you touch a wall or a tile that isn't ice.
+- One-Way Tiles: Allows movement or pushing of objects in one direction but blocks movement in the opposite direction acts like ice, except the direction is set and does not depend on the input.
 - Locked Door: Alphonse must pick up a key which then can be used a single time to open a locked door.
 
 ### Interactables
@@ -37,6 +38,5 @@
 - Lava Tile: Destroys any movable object or Alphonse that touches it unless covered by a bridge object.
 - Mirror Tile: laser beams in a new direction.
 - Spring Tile: Launches Alphonse or objects several tiles in a specified direction when stepped on or activated.
-- One-Way Gate: Allows movement or pushing of objects in one direction but blocks movement in the opposite direction.
 - Wind Tile: Constantly pushes objects and Alphonse in a direction, similar to a conveyor belt but always active.
 - Crumbling Tile: Breaks after a set number of uses, turning into an impassable obstacle.
