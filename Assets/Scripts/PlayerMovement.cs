@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     public int HP;
 
+    private Vector2 startpos;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         Inputcompo.FindAction("Movevision").performed += OnVision;
         activeTriangle = triangleEast;
         activeTriangle.SetActive(true);
+        startpos= transform.position;
         HP = 3;
     }
 
@@ -157,6 +160,13 @@ public class PlayerMovement : MonoBehaviour
             activeTriangle = triangleSouth;
             activeTriangle.SetActive(true);
         }
+    }
+
+    public void GetDamage()
+    {
+        GetComponent<Animator>().SetTrigger("Damaged");
+        HP--;
+        transform.position=startpos;
     }
 
 

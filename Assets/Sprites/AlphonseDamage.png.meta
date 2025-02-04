@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 9ac01e579434a2c418261eb0ca73a9c0
+guid: 8ec09e972ab0f59459d3e7cfc587bd3e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6035933842167239908
-    second: magma_0
+      213: -2461563258548877589
+    second: AlphonseDamage_0
+  - first:
+      213: 5500653437385867380
+    second: AlphonseDamage_1
+  - first:
+      213: 7120596135696845057
+    second: AlphonseDamage_2
+  - first:
+      213: -7211258391184202019
+    second: AlphonseDamage_3
+  - first:
+      213: -4423967958446431290
+    second: AlphonseDamage_4
+  - first:
+      213: 3439172872097493866
+    second: AlphonseDamage_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,15 +55,15 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -72,7 +87,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -113,11 +128,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: magma_0
+      name: AlphonseDamage_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -127,98 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e4132689d1f3c350800000000000000
-      internalID: 6035933842167239908
+      spriteID: be68a0e1245c6ddd0800000000000000
+      internalID: -2461563258548877589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magma_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f814c21b03587a4d9d515e9f506e644
-      internalID: 286358265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magma_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7dac68890cb681f4b84a0ac60cade230
-      internalID: 1441642900
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magma_3
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 81f99f9cbdd42dd4db70ca2fc5bcbf0a
-      internalID: -847792850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magma_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 79fa29fe34534d6428e9dc6931affd2e
-      internalID: -358003119
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magma_5
+      name: AlphonseDamage_1
       rect:
         serializedVersion: 2
         x: 16
@@ -230,16 +161,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0882d7d050a913a4aaa5492b10e065c8
-      internalID: 2042894958
+      spriteID: 4708ae7582f365c40800000000000000
+      internalID: 5500653437385867380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magma_6
+      name: AlphonseDamage_2
       rect:
         serializedVersion: 2
         x: 0
@@ -251,16 +182,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: dd3d50e7d5904534f81e0e3f5126b087
-      internalID: -172036150
+      spriteID: 109ca39757071d260800000000000000
+      internalID: 7120596135696845057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magma_7
+      name: AlphonseDamage_3
       rect:
         serializedVersion: 2
         x: 16
@@ -272,16 +203,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fd89f23fb7be87f4c8c46e88e21a65b0
-      internalID: 305338650
+      spriteID: dd629e933b67ceb90800000000000000
+      internalID: -7211258391184202019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magma_8
+      name: AlphonseDamage_4
       rect:
         serializedVersion: 2
         x: 0
@@ -293,16 +224,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: daf5513457542f841a2fcbc65fdb4787
-      internalID: 1308686524
+      spriteID: 6c3271bb498ea92c0800000000000000
+      internalID: -4423967958446431290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magma_9
+      name: AlphonseDamage_5
       rect:
         serializedVersion: 2
         x: 16
@@ -314,10 +245,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: eb1e85508d0e98b4e840912685ad17d8
-      internalID: -1086933104
+      spriteID: a63f78271856abf20800000000000000
+      internalID: 3439172872097493866
       vertices: []
       indices: 
       edges: []
@@ -325,7 +256,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 99f653d9a0c328e4b9402f54afee864d
+    spriteID: cea4a68295ed3e148912b8cfe08ae367
     internalID: 0
     vertices: []
     indices: 
@@ -333,16 +264,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      magma_0: 6035933842167239908
-      magma_1: 286358265
-      magma_2: 1441642900
-      magma_3: -847792850
-      magma_4: -358003119
-      magma_5: 2042894958
-      magma_6: -172036150
-      magma_7: 305338650
-      magma_8: 1308686524
-      magma_9: -1086933104
+      AlphonseDamage_0: -2461563258548877589
+      AlphonseDamage_1: 5500653437385867380
+      AlphonseDamage_2: 7120596135696845057
+      AlphonseDamage_3: -7211258391184202019
+      AlphonseDamage_4: -4423967958446431290
+      AlphonseDamage_5: 3439172872097493866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
