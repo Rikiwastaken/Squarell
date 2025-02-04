@@ -15,6 +15,9 @@ public class KeyGettter : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        GetComponent<TextMeshProUGUI>().text=": "+ Info.HeldKeys;
+        if (Info != null)
+        {
+            GetComponent<TextMeshProUGUI>().text = ": " + Info.HeldKeys;
+        }
     }
 }

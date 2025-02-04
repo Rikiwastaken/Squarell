@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject activeTriangle;
 
+    public int HP;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         Inputcompo.FindAction("Movevision").performed += OnVision;
         activeTriangle = triangleEast;
         activeTriangle.SetActive(true);
+        HP = 3;
     }
 
     public void OnMove(InputAction.CallbackContext context)

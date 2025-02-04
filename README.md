@@ -26,6 +26,7 @@
 - Key : Alphonse may pick up a key to open locked doors
 
 ## Todo:
+- Checkpoint
 - Laser
 - piston
 - movable that goes against the conveyor belts
